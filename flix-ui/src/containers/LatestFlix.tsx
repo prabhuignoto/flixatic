@@ -1,5 +1,4 @@
 import { graphql } from "react-apollo";
-import { gql } from "apollo-boost";
 import FlixCards from "../components/card/cards";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -13,8 +12,7 @@ import {
 import { compose } from "react-apollo";
 import Store from "../store";
 import { IState, ICard, IStateCard } from "../types";
-import {createSelector} from "reselect";
-
+import FlixQuery from "../gql/flixQuery";
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   open: (flixid: string) => dispatch(OpenDetailedViewAction(flixid)),
@@ -25,27 +23,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 const mapStateToProps = ({ cards }: IState) => ({
   cards
 });
-
-const query = gql`
-  query getNewReleases($country: String!, $page: Int!, $daysBack: Int!) {
-    getNewReleasesByCountry(
-      country: $country
-      page: $page
-      daysBack: $daysBack
-    ) {
-      netflixid
-      title
-      image
-      synopsis
-      type
-      largeimage
-      imdbid
-      rating
-      released
-      runtime
-    }
-  }
-`;
 
 interface IProps {
   open: (id: string) => void;
@@ -66,7 +43,7 @@ const Cards = ({ cards, open, close, loading }: IProps) => {
 };
 
 export default compose(
-  graphql(query, {
+  graphql(FlixQuery, {
     options: () => ({
       variables: {
         country: "US",

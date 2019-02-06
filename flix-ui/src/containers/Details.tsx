@@ -1,5 +1,4 @@
 import { graphql, compose } from "react-apollo";
-import { gql } from "apollo-boost";
 import { connect } from "react-redux";
 import { IState, info } from "../types";
 import DetailPopup from "../components/detail/detail-popup";
@@ -12,43 +11,17 @@ import {
 } from "../action-creators";
 import Store from "../store";
 
-const mapStateToProps = ({
-  detailedInfo: { flixId, isOpen }
-}: IState) => {
+const mapStateToProps = ({ detailedInfo: { flixId, isOpen } }: IState) => {
   return {
     flixId,
-    isOpen,
+    isOpen
   };
 };
+import DetailsQuery from "../gql/detailsQuery";
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   closePopup: (flixId: string) => dispatch(CloseDetailedViewAction(flixId))
 });
-
-const query = gql`
-  query getMovieDetails($flixId: String!) {
-    getMovieDetails(flixId: $flixId) {
-      flixInfo {
-        title
-        synopsis
-        matlevel
-        avgrating
-        type
-        image1
-        netflixid
-      }
-      imdbInfo {
-        rating
-        votes
-        metascore
-        genre
-        country
-        language
-        plot
-      }
-    }
-  }
-`;
 
 interface IProps {
   flixId: string;
@@ -62,7 +35,6 @@ interface IProps {
   };
   error: any;
   closePopup: (flixId: string) => void;
-  onDataLoaded: () => void;
 }
 
 const DetailedViewHOC = ({ data, closePopup, flixId }: IProps) => {
@@ -86,17 +58,16 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  graphql(query, {
+  graphql(DetailsQuery, {
     skip: ({ isOpen, flixId }: IProps) => {
       return !flixId && !isOpen;
     },
-    options: ({ flixId, onDataLoaded }: IProps) => {
+    options: ({ flixId }: IProps) => {
       return {
         variables: {
           flixId: flixId
         },
         onCompleted: ({ getMovieDetails }: any) => {
-          debugger;
           if (getMovieDetails) {
             Store.dispatch(
               LoadedDetailedView(getMovieDetails.flixInfo.netflixid)
@@ -104,8 +75,8 @@ export default compose(
           }
         },
         onError: (error: any) => {
-          if(error) {
-            Store.dispatch(FlixDataLoadFailed())
+          if (error) {
+            Store.dispatch(FlixDataLoadFailed());
           }
         }
       };

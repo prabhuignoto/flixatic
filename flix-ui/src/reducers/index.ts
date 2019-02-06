@@ -39,18 +39,18 @@ export default function(state: IState = State, action: any) {
       });
     case LOADED_DETAILED_VIEW:
       return Object.assign({}, state, {
-        cards: state.cards.map(card => {
-          return Object.assign({}, card, {
-            isFlixLoading: false
-          });
-        })
+        detailedInfo: {
+          isOpen: false,
+          flixId: String(action.flixId),
+          isFlixFailedToLoad: false,
+          isFlixLoading: false
+        }
       });
     case FLIX_DATA_LOAD_FAILED:
       return Object.assign({}, state, {
         detailedInfo: {
           isOpen: false,
-          flixId: "",
-          isFlixFailedToLoad: false,
+          isFlixFailedToLoad: true,
           isFlixLoading: false
         }
       });

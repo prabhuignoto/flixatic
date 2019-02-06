@@ -1,12 +1,17 @@
 import * as React from "react";
-import { IState } from "../types";
+import { IState, DetailedInfo } from "../types";
 import { connect } from "react-redux";
-import { FlixCard } from "../components/card/card";
-import { createSelector } from "reselect";
+import FlixCard from "../components/card/card";
 
-const mapStateToProps = ({detailedInfo: {isFlixFailedToLoad, isFlixLoading}}: IState) => ({
-  isFlixFailedToLoad,
-  isFlixLoading
+const mapStateToProps = ({
+  detailedInfo: { flixId, isFlixLoading, isFlixFailedToLoad }
+}: IState) => ({
+  isLoading: isFlixLoading,
+  dataLoadFailed: isFlixFailedToLoad,
+  activeFlixId: flixId
 });
 
-export default connect(mapStateToProps, null)(FlixCard);
+export default connect(
+  mapStateToProps,
+  null
+)(FlixCard);
