@@ -23,6 +23,7 @@ interface ICardDetails {
   synopsis: string;
   runtime: string;
   released: string;
+  isLoading: boolean;
 }
 
 const CardDetails: React.FunctionComponent<ICardDetails> = ({
@@ -31,7 +32,8 @@ const CardDetails: React.FunctionComponent<ICardDetails> = ({
   name,
   synopsis,
   runtime,
-  released
+  released,
+  isLoading
 }) => {
   const [showMore, setShowMore] = React.useState(false);
   return (

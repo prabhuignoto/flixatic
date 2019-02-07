@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   width: 100%;
   position: relative;
   border-radius: 2px;
-  box-shadow: 0 0 6px 1px rgba(105,105,105,0.65);
-  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.5);
 `;
 
 export const RatingWrapper = styled.div`

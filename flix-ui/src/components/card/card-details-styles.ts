@@ -41,13 +41,13 @@ export const Details = styled.div<{ show: boolean }>`
   padding: 0.5rem 0.25rem;
   position: absolute;
   left: 0;
-  width: 95%;
+  width: 97%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   cursor: pointer;
-  background: ${p => (p.show ? "rgba(0,0,0,0.9)" : "rgba(0,0,0,0.8)")};
+  background: ${p => (p.show ? "rgba(0,0,0,0.9)" : "rgba(0,0,0,0.9)")};
   top: 0px;
   z-index: 10;
 `;
@@ -57,7 +57,7 @@ export const PosedDetails = Posed(Details)({
     minHeight: "95%",
   },
   hide: {
-    minHeight: "20px"
+    minHeight: "25px"
   }
 });
 

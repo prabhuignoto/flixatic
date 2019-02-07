@@ -22,5 +22,4 @@ export const PlotBody = styled.div`
   text-align: left;
   padding: 0.6rem;
   word-break: break-word;
-  font-size: 1.2rem;
 `;

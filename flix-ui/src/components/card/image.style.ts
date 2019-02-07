@@ -7,8 +7,9 @@ export const Wrapper = styled.div`
 
 export const StyledImage = styled.img<{blur: boolean}>`
   border-radius: 4px;
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
   height: 100%;
+  
   filter: ${p => p.blur ? "blur(2px)" : ""};
 `;

@@ -40,14 +40,14 @@ export default class FlixCard extends React.Component<IProps, {}> {
     this.state = {};
   }
 
-  shouldComponentUpdate = (nextProps:IProps, nextState: any) => {
-    if(nextProps.activeFlixId === String(this.props.netflixid)) {
+  shouldComponentUpdate = (nextProps: IProps, nextState: any) => {
+    if (nextProps.activeFlixId === String(this.props.netflixid)) {
       return true;
     } else {
       return false;
     }
-  }
-  
+  };
+
   render() {
     const {
       dataLoadFailed,
@@ -64,14 +64,17 @@ export default class FlixCard extends React.Component<IProps, {}> {
     return (
       <PosedWrapper key={netflixid}>
         <Image url={image} title={title} blur={isLoading} />
-        <CardDetails
-          rating={rating}
-          netflixid={netflixid}
-          synopsis={synopsis}
-          name={title}
-          runtime={runtime}
-          released={released}
-        />
+        {!isLoading && (
+          <CardDetails
+            rating={rating}
+            netflixid={netflixid}
+            synopsis={synopsis}
+            name={title}
+            runtime={runtime}
+            released={released}
+            isLoading={isLoading}
+          />
+        )}
         {
           <DetailButton
             title={
