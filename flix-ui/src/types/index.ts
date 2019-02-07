@@ -12,7 +12,7 @@ export interface ICard {
   closeDetailedView: (flixid: string) => void;
   loadingDetailedView: (flixid: string) => void;
   isLoading: boolean;
-  dataLoadFailed: boolean
+  dataLoadFailed: boolean;
 }
 
 export interface DetailedInfo {
@@ -22,13 +22,17 @@ export interface DetailedInfo {
   isFlixFailedToLoad: boolean;
 }
 
-export interface IStateCard extends ICard{
+export interface IStateCard extends ICard {
   isLoading: boolean;
   dataLoadFailed: boolean;
 }
 
 export interface IState {
   detailedInfo: DetailedInfo;
+  country: {
+    id: string;
+    value: string;
+  };
   cards: IStateCard[];
 }
 
@@ -40,4 +44,20 @@ export interface IDetailPopup {
   netflixInfo?: any;
   imdbInfo: any;
   close: (flixId: string) => void;
+}
+
+export interface IDropDown {
+  value: string;
+  id: string;
+  handleClick: (value: string, id: string) => void;
+}
+
+export interface ITabHead {
+  title: string;
+  handleClick: (title: string) => void;
+  selected: boolean;
+}
+
+export interface ITab {
+  items: Array<{ name: string; renderView: React.FunctionComponent }>;
 }

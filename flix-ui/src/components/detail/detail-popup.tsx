@@ -6,13 +6,14 @@ import {
   DetailPopupContent,
   DetailWrapperOne,
   DetailWrapperTwo,
-  FlixTitle,
   CloseButton
 } from "./detail.styles";
 import ImdbView from "./imdbView";
 import PlotView from "./plotView";
 import FlixView from "./flixView";
 import { ReactComponent as CloseSVG } from "../../assets/close.svg";
+import { FlixTitle } from "./flix.styles";
+import Tab from "../tabs";
 
 export default class extends React.Component<IDetailPopup, {}> {
   constructor(props: IDetailPopup) {
@@ -32,11 +33,29 @@ export default class extends React.Component<IDetailPopup, {}> {
                 avgRating={netflixInfo.avgrating}
                 image1={netflixInfo.image1}
               />
-              <ImdbView values={imdbInfo} />
+              <Tab
+                items={[
+                  {
+                    name: "Movie Info",
+                    renderView: () => <ImdbView values={imdbInfo} />
+                  },
+                  {
+                    name: "Plot",
+                    renderView: () => <PlotView value={imdbInfo.plot} />
+                  },
+                  {
+                    name: "Cast & Crew",
+                    renderView: () => <div>Prabhu</div>
+                  }
+                ]}
+              />
+              {/* <ImdbView values={imdbInfo} /> */}
             </DetailWrapperOne>
-            <DetailWrapperTwo>
-              <PlotView value={imdbInfo.plot} />
-            </DetailWrapperTwo>
+            {/* <DetailWrapperTwo>
+              {imdbInfo.plot && imdbInfo.plot !== "N/A" && (
+                <PlotView value={imdbInfo.plot} />
+              )}
+            </DetailWrapperTwo> */}
           </DetailPopupContent>
           <CloseButton onClick={() => close("")}>
             <CloseSVG />

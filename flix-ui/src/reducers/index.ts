@@ -1,4 +1,4 @@
-import { FLIX_DATA_LOAD_FAILED } from "./../actions/index";
+import { FLIX_DATA_LOAD_FAILED, CHANGE_COUNTRY } from "./../actions/index";
 import { IState } from "./../types/index";
 import {
   OPEN_DETAILED_VIEW,
@@ -15,7 +15,11 @@ const State: IState = {
     isFlixFailedToLoad: false,
     isFlixLoading: false
   },
-  cards: []
+  cards: [],
+  country: {
+    id: "US",
+    value: "United States"
+  }
 };
 
 export default function(state: IState = State, action: any) {
@@ -57,6 +61,14 @@ export default function(state: IState = State, action: any) {
     case FLIX_DATA_LOADED:
       return Object.assign({}, state, {
         cards: action.data
+      });
+    case CHANGE_COUNTRY:
+      return Object.assign({}, state, {
+        country: {
+          value: action.country,
+          id: action.id
+        },
+        cards: []
       });
     default:
       return state;

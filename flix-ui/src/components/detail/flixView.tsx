@@ -5,7 +5,7 @@ import {
   FlixImage,
   FlixTitle,
   FlixStarsWrapper
-} from "./detail.styles";
+} from "./flix.styles";
 import Stars from "../card/stars";
 
 interface IFlixView {

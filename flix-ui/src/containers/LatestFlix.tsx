@@ -20,8 +20,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   loading: (flixId: string) => dispatch(LoadingDetailedView(flixId))
 });
 
-const mapStateToProps = ({ cards }: IState) => ({
-  cards
+const mapStateToProps = ({ cards, country: { id } }: IState) => ({
+  cards,
+  countryId: id
 });
 
 interface IProps {
@@ -29,42 +30,54 @@ interface IProps {
   close: (id: string) => void;
   loading: (id: string) => void;
   cards: ICard[];
+  countryId: string;
 }
 
-const Cards = ({ cards, open, close, loading }: IProps) => {
-  return (
-    <FlixCards
-      items={cards}
-      openDetailedView={open}
-      closeDetailedView={close}
-      loadingDetailedView={loading}
-    />
-  );
-};
+class Cards extends React.Component<IProps> {
+  constructor(props: IProps) {
+    super(props);
+  }
+
+  render() {
+    const { cards, close, loading } = this.props;
+    return (
+      <FlixCards
+        items={cards}
+        openDetailedView={open}
+        closeDetailedView={close}
+        loadingDetailedView={loading}
+      />
+    );
+  }
+}
 
 export default compose(
-  graphql(FlixQuery, {
-    options: () => ({
-      variables: {
-        country: "US",
-        page: 1,
-        daysBack: 20
-      },
-      onCompleted: ({ getNewReleasesByCountry }: any) => {
-        if (getNewReleasesByCountry) {
-          const modData = getNewReleasesByCountry.map((x: any) =>
-            Object.assign({}, x, {
-              isLoading: false,
-              dataLoadFailed: false
-            })
-          );
-          Store.dispatch(FlixDataLoaded(modData));
-        }
-      }
-    })
-  }),
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )
+  ),
+  graphql(FlixQuery, {
+    // can we do this in a better way
+    skip: ({cards}: IProps) => cards.length > 0,
+    options: ({ countryId }: IProps) => {
+      return {
+        variables: {
+          country: countryId,
+          page: 1,
+          daysBack: 30
+        },
+        onCompleted: ({ getNewReleasesByCountry }: any) => {
+          if (getNewReleasesByCountry) {
+            const modData = getNewReleasesByCountry.map((x: any) =>
+              Object.assign({}, x, {
+                isLoading: false,
+                dataLoadFailed: false
+              })
+            );
+            Store.dispatch(FlixDataLoaded(modData));
+          }
+        }
+      };
+    }
+  })
 )(Cards);
