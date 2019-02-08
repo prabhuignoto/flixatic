@@ -1,10 +1,9 @@
 import * as React from "react";
 import {
   DropdownWrapper,
-  DropdownList,
-  ListWrapper,
   ArrowWrapper,
-  DropdownVal
+  DropdownVal,
+  PosedListWrapper
 } from "./dropdown-styles";
 import List from "./dropdown-list";
 import { ReactComponent as ArrowSVG } from "../../assets/arrow-dropdown.svg";
@@ -22,6 +21,13 @@ const Dropdown: React.FunctionComponent<IDropDown> = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const [selectedVal, setSelectedVal] = React.useState(title);
+  const listWrapperRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (open) {
+      listWrapperRef.current.focus();
+    }
+  });
 
   const [collection, setItems] = React.useState(
     items.map(x =>
@@ -50,13 +56,20 @@ const Dropdown: React.FunctionComponent<IDropDown> = ({
     <DropdownWrapper
       onClick={() => {
         setOpen(!open);
+        // listWrapperRef.current.focus();
       }}
     >
       <DropdownVal>{selectedVal}</DropdownVal>
       {open && (
-        <ListWrapper>
+        <PosedListWrapper
+          pose={"open"}
+          initialPose={"close"}
+          tabIndex={0}
+          ref={listWrapperRef}
+          onBlur={() => setOpen(false)}
+        >
           <List items={collection} handleClick={handleClick} />
-        </ListWrapper>
+        </PosedListWrapper>
       )}
       <ArrowWrapper>
         <ArrowSVG />

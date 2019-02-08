@@ -7,6 +7,7 @@ const Logo = styled.div`
   color: #FFC30B;
   margin-right: auto;
   text-shadow: 3px 4px 10px rgba(0,0,0,0.95);
+  text-transform: uppercase;
 `;
 
 const LogoView: React.FunctionComponent = () => (

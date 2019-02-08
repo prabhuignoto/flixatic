@@ -46,6 +46,7 @@ const Tab: React.FunctionComponent<{
             title={x.name}
             handleClick={handleClick}
             selected={x.selected}
+            key={x.name}
           />
         ))}
       </TabHeads>

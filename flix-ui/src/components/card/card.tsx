@@ -43,8 +43,6 @@ export default class FlixCard extends React.Component<
     this.state = {
       hover: false
     };
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   shouldComponentUpdate = (nextProps: IProps, nextState: any) => {
@@ -57,18 +55,6 @@ export default class FlixCard extends React.Component<
       return false;
     }
   };
-
-  handleMouseEnter() {
-    this.setState({
-      hover: true
-    });
-  }
-
-  handleMouseLeave() {
-    this.setState({
-      hover: false
-    });
-  }
 
   render() {
     const {
@@ -86,8 +72,6 @@ export default class FlixCard extends React.Component<
     return (
       <PosedWrapper
         key={netflixid}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
       >
         <Image url={image} title={title} blur={isLoading} />
         {!isLoading && (
@@ -101,7 +85,7 @@ export default class FlixCard extends React.Component<
             isLoading={isLoading}
           />
         )}
-        {this.state.hover ? (
+        {(
           <DetailButton
             title={
               dataLoadFailed
@@ -118,7 +102,7 @@ export default class FlixCard extends React.Component<
             {!isLoading && !dataLoadFailed && <PlusSVG />}
             {dataLoadFailed && <ErrorSVG />}
           </DetailButton>
-        ) : null}
+        )}
       </PosedWrapper>
     );
   }

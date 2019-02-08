@@ -1,3 +1,4 @@
+import Posed from "react-pose";
 import styled from "styled-components";
 
 export const AttributeWrapper = styled.div<{ direction: string }>`
@@ -17,14 +18,14 @@ export const AttributeTitle = styled.span`
   text-transform: capitalize;
   color: #fff;
   margin-right: auto;
-  color: #FFBF00;
+  color: #ffbf00;
   font-weight: 500;
   padding-left: 0.5rem;
 `;
 export const AttributeValue = styled.span`
   color: #fff;
   text-align: left;
-  padding-right:0.5rem;
+  padding-right: 0.5rem;
 `;
 
 export const ImdbWrapper = styled.div`
@@ -36,7 +37,7 @@ export const ImdbWrapper = styled.div`
   border-radius: 4px;
   height: 280px;
   width: 100%;
-  box-shadow:0 0 5px 1px rgba(0,0,0,0.4);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
 `;
 
 export const DetailPopupBackdrop = styled.div`
@@ -59,6 +60,17 @@ export const DetailPopupContainer = styled.div`
   position: relative;
 `;
 
+export const PosedDetailPopupContainer = Posed(DetailPopupContainer)({
+  open: {
+    transform: "scale(1)",
+    opacity: 1
+  },
+  close: {
+    transform: "scale(0.9)",
+    opacity: 0
+  }
+});
+
 export const DetailPopupContent = styled.div`
   height: 100%;
   width: 100%;
@@ -66,7 +78,7 @@ export const DetailPopupContent = styled.div`
   flex-direction: column;
   padding: 1.5rem;
   background: #272727;
-  box-shadow: 0 0 10px 1px rgba(0,0,0,0.7);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
   border-radius: 4px;
 `;
 
@@ -86,8 +98,6 @@ export const DetailWrapperTwo = styled.div`
   width: 100%;
   flex: 2;
 `;
-
-
 
 export const CloseButton = styled.button`
   border: none;
