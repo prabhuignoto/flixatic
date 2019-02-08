@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const FlixWrapper = styled.div`
-  padding: 0.5rem;
   position: relative;
   min-height: 250px;
   flex: 1;
@@ -14,7 +13,7 @@ export const FlixImageWrapper = styled.div`
   align-items: center;
   margin-right: 0.25rem;
   box-shadow: inset 0px 0px 20px 1px rgba(0,0,0,0.75);
-  border: 2px solid #FFBF00;
+  border: 2px solid rgba(255, 191, 0, 0.5);
 `;
 
 export const FlixImage = styled.img`
@@ -27,20 +26,15 @@ export const FlixImage = styled.img`
 export const FlixTitle = styled.span`
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   color: #FFBF00;
   text-align: left;
   margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const FlixStarsWrapper = styled.div`
-  background: rgba(0,0,0,0.9);
   padding: 0.2rem;
-  position: absolute;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width:100px;
+  width:150px;
 `;

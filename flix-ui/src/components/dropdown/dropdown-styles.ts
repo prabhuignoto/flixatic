@@ -10,9 +10,8 @@ export const DropdownWrapper = styled.div`
   position: relative;
   margin: 1rem 0;
   background: #1d1d1d;
-  border: 2px solid #272727;
   border-radius: 4px;
-  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 `;
 

@@ -12,8 +12,9 @@ import ImdbView from "./imdbView";
 import PlotView from "./plotView";
 import FlixView from "./flixView";
 import { ReactComponent as CloseSVG } from "../../assets/close.svg";
-import { FlixTitle } from "./flix.styles";
+import { FlixTitle, FlixStarsWrapper } from "./flix.styles";
 import Tab from "../tabs";
+import Stars from "../card/stars";
 
 export default class extends React.Component<IDetailPopup, {}> {
   constructor(props: IDetailPopup) {
@@ -26,7 +27,14 @@ export default class extends React.Component<IDetailPopup, {}> {
       <DetailPopupBackdrop>
         <DetailPopupContainer>
           <DetailPopupContent>
-            <FlixTitle>{netflixInfo.title}</FlixTitle>
+            <FlixTitle>
+              <span>{netflixInfo.title}</span>
+              {netflixInfo.avgrating && (
+                <FlixStarsWrapper>
+                  <Stars rating={netflixInfo.avgrating} />
+                </FlixStarsWrapper>
+              )}
+            </FlixTitle>
             <DetailWrapperOne>
               <FlixView
                 title={netflixInfo.title}
@@ -49,13 +57,7 @@ export default class extends React.Component<IDetailPopup, {}> {
                   }
                 ]}
               />
-              {/* <ImdbView values={imdbInfo} /> */}
             </DetailWrapperOne>
-            {/* <DetailWrapperTwo>
-              {imdbInfo.plot && imdbInfo.plot !== "N/A" && (
-                <PlotView value={imdbInfo.plot} />
-              )}
-            </DetailWrapperTwo> */}
           </DetailPopupContent>
           <CloseButton onClick={() => close("")}>
             <CloseSVG />

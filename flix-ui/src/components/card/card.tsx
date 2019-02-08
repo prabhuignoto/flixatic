@@ -34,19 +34,41 @@ interface IProps {
   activeFlixId: string;
 }
 
-export default class FlixCard extends React.Component<IProps, {}> {
+export default class FlixCard extends React.Component<
+  IProps,
+  { hover: boolean }
+> {
   constructor(props: IProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      hover: false
+    };
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   shouldComponentUpdate = (nextProps: IProps, nextState: any) => {
-    if (nextProps.activeFlixId === String(this.props.netflixid)) {
+    if (
+      nextProps.activeFlixId === String(this.props.netflixid) ||
+      this.state.hover !== nextState.hover
+    ) {
       return true;
     } else {
       return false;
     }
   };
+
+  handleMouseEnter() {
+    this.setState({
+      hover: true
+    });
+  }
+
+  handleMouseLeave() {
+    this.setState({
+      hover: false
+    });
+  }
 
   render() {
     const {
@@ -62,7 +84,11 @@ export default class FlixCard extends React.Component<IProps, {}> {
       loadingDetailedView
     } = this.props;
     return (
-      <PosedWrapper key={netflixid}>
+      <PosedWrapper
+        key={netflixid}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <Image url={image} title={title} blur={isLoading} />
         {!isLoading && (
           <CardDetails
@@ -75,7 +101,7 @@ export default class FlixCard extends React.Component<IProps, {}> {
             isLoading={isLoading}
           />
         )}
-        {
+        {this.state.hover ? (
           <DetailButton
             title={
               dataLoadFailed
@@ -92,7 +118,7 @@ export default class FlixCard extends React.Component<IProps, {}> {
             {!isLoading && !dataLoadFailed && <PlusSVG />}
             {dataLoadFailed && <ErrorSVG />}
           </DetailButton>
-        }
+        ) : null}
       </PosedWrapper>
     );
   }

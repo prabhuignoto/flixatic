@@ -2,12 +2,12 @@
   text-align: center;
   max-width: 1400px;
   margin: 0 auto;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 body {
   background: #232323;
-  font-family: "PT Sans";
+  font-family: "Open Sans";
 }
 
 .App-logo {

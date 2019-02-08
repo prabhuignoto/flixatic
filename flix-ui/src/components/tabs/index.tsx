@@ -13,9 +13,9 @@ const Tab: React.FunctionComponent<{
 }> = ({ items }) => {
   const [renderView, setRenderView] = React.useState(items[0].renderView);
   const [tabs, setTabs] = React.useState(
-    items.map(x =>
+    items.map((x, index) =>
       Object.assign({}, x, {
-        selected: false
+        selected: index === 0 ? true : false
       })
     )
   );

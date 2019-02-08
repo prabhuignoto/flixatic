@@ -33,8 +33,8 @@ export const DetailButton = styled.button`
   background: none;
   border: none;
   padding: 0.2rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   position: absolute;
   left: 0;
   right: 0;

@@ -23,9 +23,7 @@ const FlixView: React.FunctionComponent<IFlixView> = ({
     <FlixImageWrapper>
       <FlixImage src={image1} />
     </FlixImageWrapper>
-    <FlixStarsWrapper>
-      <Stars rating={avgRating} />
-    </FlixStarsWrapper>
+    
   </FlixWrapper>
 );
 

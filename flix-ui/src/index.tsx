@@ -15,7 +15,7 @@ const Client = new ApolloClient({
 
 WebFont.load({
   google: {
-    families: ["PT Sans:n4,n5"]
+    families: ["Open Sans:n4,n5"]
   }
 });
 

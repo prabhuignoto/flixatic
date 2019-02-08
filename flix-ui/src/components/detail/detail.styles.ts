@@ -54,7 +54,7 @@ export const DetailPopupBackdrop = styled.div`
 `;
 
 export const DetailPopupContainer = styled.div`
-  width: 950px;
+  width: 850px;
   min-height: 300px;
   position: relative;
 `;
@@ -64,7 +64,7 @@ export const DetailPopupContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.5rem;
   background: #272727;
   box-shadow: 0 0 10px 1px rgba(0,0,0,0.7);
   border-radius: 4px;
@@ -84,6 +84,7 @@ export const DetailWrapperTwo = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex: 2;
 `;
 
 
@@ -97,6 +98,6 @@ export const CloseButton = styled.button`
   border-radius: 50%;
   cursor: pointer;
   top: 0.5rem;
-  right: -1.25rem;
+  right: -2.5rem;
   background: none;
 `;
