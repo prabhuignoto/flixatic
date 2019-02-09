@@ -16,6 +16,8 @@ const Server = new ApolloServer({
   dataSources: () => ({
     flixApi: new FlixDataSource(),
   }),
+  introspection: true,
+  playground: true,
   resolvers,
   typeDefs,
 });
