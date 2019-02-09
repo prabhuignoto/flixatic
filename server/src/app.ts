@@ -25,6 +25,9 @@ app.use(Morgan("short"));
 app.use(cors({
   origin: "https://flixatic.netlify.com",
 }));
+app.use(BodyParser.urlencoded({
+  extended: false,
+}));
 app.use(BodyParser.json());
 
 Server.applyMiddleware({
