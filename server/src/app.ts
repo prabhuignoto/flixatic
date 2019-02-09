@@ -1,9 +1,9 @@
 import { ApolloServer } from "apollo-server-express";
+import cors from "cors";
 import { config } from "dotenv";
 import express from "express";
 import Morgan from "morgan";
 import FlixDataSource from "./FlixDataSource2";
-import InfoLogger from "./loggers/info";
 import resolvers from "./resolvers";
 import typeDefs from "./typedefs";
 
@@ -21,6 +21,9 @@ const Server = new ApolloServer({
 
 const app = express();
 app.use(Morgan("short"));
+app.use(cors({
+  origin: "http://flixatic.netlify.com",
+}));
 
 Server.applyMiddleware({
   app,
