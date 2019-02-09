@@ -38,7 +38,11 @@ const CardDetails: React.FunctionComponent<ICardDetails> = ({
   const [showMore, setShowMore] = React.useState(false);
   return (
     <PosedDetails
-      onClick={() => setShowMore(true)}
+      onClick={(ev: React.MouseEvent) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        setShowMore(true);
+      }}
       initialPose={"hide"}
       pose={showMore ? "show" : "hide"}
       show={showMore}

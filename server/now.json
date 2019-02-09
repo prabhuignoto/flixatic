@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "name": "nodejs",
+  "builds": [{ "src": "./src/app.ts", "use": "@now/node@canary" }]
+}

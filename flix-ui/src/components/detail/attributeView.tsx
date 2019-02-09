@@ -8,7 +8,7 @@ import {
 interface IAttribute {
   title: string;
   value: string;
-  direction: string;
+  direction?: string;
 }
 
 const AttributeView: React.FunctionComponent<IAttribute> = ({

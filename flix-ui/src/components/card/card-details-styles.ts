@@ -47,7 +47,7 @@ export const Details = styled.div<{ show: boolean }>`
   align-items: flex-start;
   justify-content: flex-start;
   cursor: pointer;
-  background: ${p => (p.show ? "rgba(0,0,0,0.9)" : "rgba(0,0,0,0.9)")};
+  background: ${p => (p.show ? "rgba(0,0,0,1)" : "rgba(0,0,0,0.9)")};
   top: 0px;
   z-index: 10;
 `;
@@ -73,7 +73,7 @@ export const Synopsis = styled.span`
   color: #fff;
   text-align: left;
   margin: 0.25rem 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 `;
 
 export const Button = styled.button`

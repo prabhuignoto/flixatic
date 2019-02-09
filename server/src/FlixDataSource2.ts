@@ -22,6 +22,7 @@ export default class FlixDataSource extends RESTDataSource {
       return response.ITEMS;
     } catch (error) {
       // tslint:disable-next-line:no-console
+      console.log(error);
       errorLogger.log({
         level: "error",
         message: error,
@@ -44,6 +45,19 @@ export default class FlixDataSource extends RESTDataSource {
       };
     } catch (error) {
       // tslint:disable-next-line:no-console
+      errorLogger.log({
+        level: "error",
+        message: error,
+      });
+    }
+  }
+
+  public async getFullImdbInfo(flixId: string) {
+    try {
+      const query = `?t=getimdb&q=${flixId}`;
+      const response = await this.get(query);
+      return response;
+    } catch (error) {
       errorLogger.log({
         level: "error",
         message: error,

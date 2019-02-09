@@ -39,7 +39,7 @@ export const FlixImage = styled.img<{ loading: boolean }>`
 export const FlixTitle = styled.span`
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #ffbf00;
   text-align: left;
   margin-left: 0.5rem;

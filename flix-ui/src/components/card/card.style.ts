@@ -5,8 +5,12 @@ export const Wrapper = styled.div`
   width: 100%;
   position: relative;
   border-radius: 2px;
-  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
-  border: 1px solid rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  &:hover {
+    filter: brightness(1.2);
+  }
 `;
 
 export const RatingWrapper = styled.div`
@@ -29,7 +33,7 @@ export const StarsWrapper = styled.div`
   margin-left: 0.5rem;
 `;
 
-export const DetailButton = styled.button`
+export const DetailButton = styled.button<{ loading?: boolean }>`
   background: none;
   border: none;
   padding: 0.2rem;
@@ -43,7 +47,7 @@ export const DetailButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50%;
-  background: rgba(0,0,0,0.6);
+  background: ${p => (p.loading ? "rgba(0,0,0,0.6)" : "")};
   cursor: pointer;
   outline: none;
 `;

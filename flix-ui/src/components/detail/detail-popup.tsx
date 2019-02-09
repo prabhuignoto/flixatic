@@ -16,6 +16,7 @@ import { ReactComponent as CloseSVG } from "../../assets/close.svg";
 import { FlixTitle, FlixStarsWrapper } from "./flix.styles";
 import Tab from "../tabs";
 import Stars from "../card/stars";
+import ImdbFullInfo from "../../containers/ImdbFullInfo";
 
 const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   imdbInfo,
@@ -59,6 +60,10 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
                 {
                   name: "Plot",
                   renderView: () => <PlotView value={imdbInfo.plot} />
+                },
+                {
+                  name: "IMDB",
+                  renderView: () => <ImdbFullInfo flixId={netflixInfo.netflixid}/>
                 },
                 {
                   name: "Cast & Crew",

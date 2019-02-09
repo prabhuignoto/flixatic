@@ -4,7 +4,7 @@ import Image from "./image";
 import { ICard } from "../../types";
 import Posed from "react-pose";
 import CardDetails from "./card-details";
-import { ReactComponent as PlusSVG } from "../../assets/plus.svg";
+import { ReactComponent as OpenSVG } from "../../assets/open.svg";
 import { ReactComponent as LoadingSVG } from "../../assets/rolliong.svg";
 import { ReactComponent as ErrorSVG } from "../../assets/exclamation.svg";
 
@@ -72,6 +72,11 @@ export default class FlixCard extends React.Component<
     return (
       <PosedWrapper
         key={netflixid}
+        onClick={() => {
+          if (!dataLoadFailed) {
+            loadingDetailedView(netflixid);
+          }
+        }}
       >
         <Image url={image} title={title} blur={isLoading} />
         {!isLoading && (
@@ -92,14 +97,10 @@ export default class FlixCard extends React.Component<
                 ? "Failed to fetch the Movie info. Please try again later"
                 : ""
             }
-            onClick={() => {
-              if (!dataLoadFailed) {
-                loadingDetailedView(netflixid);
-              }
-            }}
+            loading={isLoading}
           >
             {isLoading && <LoadingSVG />}
-            {!isLoading && !dataLoadFailed && <PlusSVG />}
+            {/* {!isLoading && !dataLoadFailed && <OpenSVG />} */}
             {dataLoadFailed && <ErrorSVG />}
           </DetailButton>
         )}

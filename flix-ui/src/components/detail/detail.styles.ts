@@ -4,13 +4,19 @@ import styled from "styled-components";
 export const AttributeWrapper = styled.div<{ direction: string }>`
   display: flex;
   flex-direction: ${p => (p.direction ? p.direction : "row")};
-  align-items: center;
+  align-items: ${p => (p.direction === "row" ? "center" : "flex-start")};
   justify-content: center;
   width: 100%;
-  margin: 0.25rem 0;
-  padding: 0.5rem 0rem;
+  padding: 0.75rem 0rem;
+  font-size: 0.85rem;
   &:not(:last-child) {
     border-bottom: 1px dotted #313131;
+  }
+  & > span {
+    &:nth-child(2) {
+      padding-left: ${p => (p.direction === "column" ? "0.5rem" : "")};
+      padding-top: ${p => (p.direction === "column" ? "0.5rem" : "")};
+    }
   }
 `;
 
@@ -20,12 +26,14 @@ export const AttributeTitle = styled.span`
   margin-right: auto;
   color: #ffbf00;
   font-weight: 500;
+  font-size: 0.95rem;
   padding-left: 0.5rem;
 `;
 export const AttributeValue = styled.span`
   color: #fff;
   text-align: left;
   padding-right: 0.5rem;
+  font-size: 0.9rem;
 `;
 
 export const ImdbWrapper = styled.div`
@@ -37,7 +45,6 @@ export const ImdbWrapper = styled.div`
   border-radius: 4px;
   height: 280px;
   width: 100%;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
 `;
 
 export const DetailPopupBackdrop = styled.div`

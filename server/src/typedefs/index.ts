@@ -56,6 +56,38 @@ export default gql`
     imdbInfo: imdbinfo!
   }
 
+  type ImdbFullInfo {
+    poster: String
+    tomatoUserRating: String
+    rated: String
+    tomatoUserReviews: String
+    filmid: String
+    runtime: String
+    top250tv: String
+    imdbid: String
+    metascore: String
+    tomatoRating: String
+    tomatoMeter: String
+    released: String
+    top250: String
+    imdbvotes: String
+    imdbrating: String
+    awards: String
+    genre: String
+    tomatoConsensus: String
+    plot: String
+    type: String
+    localimage: String
+    tomatoFresh: String
+    language: String
+    newid: String
+    tomatoUserMeter: String
+    tomatoRotten: String
+    tomatoReviews: String
+    country: String
+    date: String
+  }
+
   type Query {
     getNewReleasesByCountry(
       country: String!
@@ -63,5 +95,6 @@ export default gql`
       daysBack: Int!
     ): [Release!]!
     getMovieDetails(flixId: String!): MovieDetails!
+    getFullImdbInfo(flixId: String!): ImdbFullInfo!
   }
 `;

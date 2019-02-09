@@ -22,6 +22,7 @@ export const TabHead = styled.li<{ selected: boolean }>`
   cursor: pointer;
   font-size: 1rem;
   position: relative;
+  user-select: none;
   &::after {
     content: "";
     position: absolute;
@@ -49,7 +50,8 @@ export const TabBody = styled.div`
   border: 1px solid #272727;
   border-top: none;
   color: #fff;
-  min-height: 280px;
+  height: 365px;
+  overflow-y: auto;
   background: #1d1d1d;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;

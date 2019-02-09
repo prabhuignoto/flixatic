@@ -61,3 +61,35 @@ export interface ITabHead {
 export interface ITab {
   items: Array<{ name: string; renderView: React.FunctionComponent }>;
 }
+
+export interface IImdbFullInfo {
+  poster: string;
+  tomatoUserRating: string;
+  rated: string;
+  tomatoUserReviews: string;
+  filmid: string;
+  runtime: string;
+  top250tv: string;
+  imdbid: string;
+  metascore: string;
+  tomatoRating: string;
+  tomatoMeter: string;
+  released: string;
+  top250: string;
+  imdbvotes: string;
+  imdbrating: string;
+  awards: string;
+  genre: string;
+  tomatoConsensus: string;
+  plot: string;
+  type: string;
+  localimage: string;
+  tomatoFresh: string;
+  language: string;
+  newid: string;
+  tomatoUserMeter: string;
+  tomatoRotten: string;
+  tomatoReviews: string;
+  country: string;
+  date: string;
+}
