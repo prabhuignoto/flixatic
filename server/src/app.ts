@@ -21,18 +21,24 @@ const Server = new ApolloServer({
 });
 
 const app = express();
-app.use(Morgan("short"));
-app.use(cors({
-  origin: "https://flixatic.netlify.com",
-}));
-app.use(BodyParser.urlencoded({
-  extended: false,
-}));
+app.use(
+  BodyParser.urlencoded({
+    extended: false,
+  }),
+);
 app.use(BodyParser.json());
+app.use(Morgan("short"));
+app.use(
+  cors({
+    origin: "https://flixatic.netlify.com",
+  }),
+);
 
 Server.applyMiddleware({
   app,
 });
 
 // tslint:disable-next-line:no-console
-app.listen({ port: process.env.PORT || 4000 }, () => console.log("🚀 Server ready at 4000"));
+app.listen({ port: process.env.PORT || 4000 }, () =>
+  console.log("🚀 Server ready at 4000"),
+);
