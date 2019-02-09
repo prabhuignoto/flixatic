@@ -11,7 +11,7 @@ import {
 const State: IState = {
   detailedInfo: {
     isOpen: false,
-    flixId: "",
+    flixId: "81033895",
     isFlixFailedToLoad: false,
     isFlixLoading: false
   },

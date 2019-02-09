@@ -57,4 +57,5 @@ export const TabBody = styled.div`
   border-bottom-right-radius: 4px;
   border: 1px solid rgba(255, 191, 0, 0.5);
   box-shadow: 0 -1px 10px 1px rgba(0,0,0,0.5);
+  overflow-x: hidden;
 `;

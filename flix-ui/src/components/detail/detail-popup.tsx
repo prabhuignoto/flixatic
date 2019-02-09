@@ -17,6 +17,7 @@ import { FlixTitle, FlixStarsWrapper } from "./flix.styles";
 import Tab from "../tabs";
 import Stars from "../card/stars";
 import ImdbFullInfo from "../../containers/ImdbFullInfo";
+import Cast from "./cast";
 
 const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   imdbInfo,
@@ -64,11 +65,13 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
                 },
                 {
                   name: "IMDB",
-                  renderView: () => <ImdbFullInfo flixId={netflixInfo.netflixid}/>
+                  renderView: () => (
+                    <ImdbFullInfo flixId={netflixInfo.netflixid} />
+                  )
                 },
                 {
                   name: "Cast & Crew",
-                  renderView: () => <div>Prabhu</div>
+                  renderView: () => <Cast {...cast} />
                 }
               ]}
             />
