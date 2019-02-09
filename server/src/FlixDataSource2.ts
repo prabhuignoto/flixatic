@@ -38,8 +38,18 @@ export default class FlixDataSource extends RESTDataSource {
       const {
         nfinfo: flixInfo,
         imdbinfo: imdbInfo,
+        people: cast,
       } = response.RESULT as IDetailsResponse;
+      // tslint:disable-next-line:no-console
+      console.log(cast.reduce(
+        (prev, current) => Object.assign({}, prev, current),
+        {},
+      ));
       return {
+        cast: cast.reduce(
+          (prev, current) => Object.assign({}, prev, current),
+          {},
+        ),
         flixInfo,
         imdbInfo,
       };

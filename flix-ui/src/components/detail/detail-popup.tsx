@@ -21,6 +21,7 @@ import ImdbFullInfo from "../../containers/ImdbFullInfo";
 const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   imdbInfo,
   netflixInfo,
+  cast,
   close
 }) => {
   const PopupRef = React.useRef(null);

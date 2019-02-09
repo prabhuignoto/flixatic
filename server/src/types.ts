@@ -27,4 +27,5 @@ export interface IDetailsResponse {
     language: string;
     imdbid: string;
   };
+  people: Array<{ [key: string]: string[] }>;
 }

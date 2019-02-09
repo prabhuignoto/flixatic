@@ -15,6 +15,7 @@ export default gql`
     imdbid: String!
     download: String!
   }
+
   type Country {
     code: String!
     country: String!
@@ -51,9 +52,16 @@ export default gql`
     imdbid: String!
   }
 
+  type Cast {
+    actor: [String!]
+    director: [String!]
+    creator: [String!]
+  }
+
   type MovieDetails {
     flixInfo: ninfo!
     imdbInfo: imdbinfo!
+    cast: Cast!
   }
 
   type ImdbFullInfo {

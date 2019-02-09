@@ -30,6 +30,11 @@ interface IProps {
     getMovieDetails: {
       flixInfo: info;
       imdbInfo: info;
+      cast: {
+        creator: string[];
+        director: string[];
+        actor: string[];
+      }
     };
     loading: boolean;
   };
@@ -45,6 +50,7 @@ const DetailedViewHOC = ({ data, closePopup, flixId }: IProps) => {
       <DetailPopup
         imdbInfo={data.getMovieDetails.imdbInfo}
         netflixInfo={data.getMovieDetails.flixInfo}
+        cast={data.getMovieDetails.cast}
         close={closePopup}
       />
     );

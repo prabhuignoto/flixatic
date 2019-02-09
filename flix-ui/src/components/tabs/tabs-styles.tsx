@@ -32,7 +32,7 @@ export const TabHead = styled.li<{ selected: boolean }>`
     bottom: -1px;
     left: 0;
     z-index: 10;
-  }
+  };
 `;
 
 export const TabHeads = styled.ul`
@@ -56,4 +56,5 @@ export const TabBody = styled.div`
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   border: 1px solid rgba(255, 191, 0, 0.5);
+  box-shadow: 0 -1px 10px 1px rgba(0,0,0,0.5);
 `;

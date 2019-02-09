@@ -21,6 +21,11 @@ export default gql`
         language
         plot
       }
+      cast {
+        actor
+        director
+        creator
+      }
     }
   }
 `;

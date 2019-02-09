@@ -43,6 +43,11 @@ export interface info {
 export interface IDetailPopup {
   netflixInfo?: any;
   imdbInfo: any;
+  cast: {
+    creator: string[];
+    director: string[];
+    actor: string[];
+  }
   close: (flixId: string) => void;
 }
 
