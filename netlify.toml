@@ -25,13 +25,13 @@ ID = "flixatic-ui"
 [context.production]
   publish = "./flix-ui/build"
   command = "yarn build"
-  environment = { REACT_APP_API_URL= "https://genetic-variants-api.herokuapp.com" }
+  environment = { REACT_APP_API_URL= "https://flixatic-api.herokuapp.com" }
 
 # Deploy Preview context: all deploys resulting from a pull/merge request will 
 # inherit these settings.
 [context.deploy-preview]
   publish = "./.flix-ui/build"
-  environment = { REACT_APP_API_URL= "https://genetic-variants-api.herokuapp.com" }
+  environment = { REACT_APP_API_URL= "https://flixatic-api.herokuapp.com" }
 
 # Here is another way to define context specific environment variables.
 # [context.deploy-preview.environment]
