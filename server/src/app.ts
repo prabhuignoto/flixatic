@@ -1,4 +1,5 @@
 import { ApolloServer } from "apollo-server-express";
+import BodyParser from "body-parser";
 import cors from "cors";
 import { config } from "dotenv";
 import express from "express";
@@ -24,6 +25,7 @@ app.use(Morgan("short"));
 app.use(cors({
   origin: "https://flixatic.netlify.com",
 }));
+app.use(BodyParser.json());
 
 Server.applyMiddleware({
   app,
