@@ -22,7 +22,7 @@ const Server = new ApolloServer({
 const app = express();
 app.use(Morgan("short"));
 app.use(cors({
-  origin: "http://flixatic.netlify.com",
+  origin: "https://flixatic.netlify.com",
 }));
 
 Server.applyMiddleware({
