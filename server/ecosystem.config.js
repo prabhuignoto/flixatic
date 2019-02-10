@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: "flixatic-node-api",
-    script: "ts-node ./src/app.ts",
+    script: "./src/app.ts",
     instances: "2",
     env: {
       NODE_ENV: "development",
