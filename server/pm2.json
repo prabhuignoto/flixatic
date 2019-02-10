@@ -2,7 +2,7 @@
   "apps": [
       {
           "name": "flixatic-graphql",
-          "script": "ts-node ./src/app.ts",
+          "script": "./src/app.ts",
           "instances": "2",
           "exec_mode": "cluster"
       }
