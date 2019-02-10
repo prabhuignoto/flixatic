@@ -51,3 +51,28 @@ export const FlixStarsWrapper = styled.div`
   padding: 0.2rem;
   width: 150px;
 `;
+
+export const FlixImageSliders = styled.div`
+  position: relative;
+`;
+
+export const FlixImageControls = styled.ul`
+  list-style: none;
+  padding: 0.2rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 1rem;  
+  height: 30px;
+  width: 100px;
+`;
+
+export const FlixImageControl = styled.li<{selected: boolean}>`
+  background: ${p => p.selected ? "#fff": "#000"};
+  border: 1px solid #fff;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+`;

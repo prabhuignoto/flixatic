@@ -3,15 +3,18 @@ import {
   FlixWrapper,
   FlixImageWrapper,
   FlixImage,
-  FlixImageLoadWrapper
+  FlixImageLoadWrapper,
+  FlixImageSliders,
+  FlixImageControls
 } from "./styles/flix.styles";
 import { ReactComponent as LoadingSVG } from "../../assets/rolling.svg";
 
 interface IFlixView {
   image1: string;
+  image2: string;
 }
 
-const FlixView: React.FunctionComponent<IFlixView> = ({ image1 }) => {
+const FlixView: React.FunctionComponent<IFlixView> = ({ image1, image2 }) => {
   const [loading, setLoading] = React.useState(true);
 
   return (

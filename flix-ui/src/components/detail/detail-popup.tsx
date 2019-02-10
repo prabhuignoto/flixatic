@@ -52,7 +52,7 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
             )}
           </FlixTitle>
           <DetailWrapperOne>
-            <FlixView image1={netflixInfo.image1} />
+            <FlixView image1={netflixInfo.image1} image2={netflixInfo.image2} />
             <Tab
               items={[
                 {

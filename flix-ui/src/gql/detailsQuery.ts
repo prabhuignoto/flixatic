@@ -10,6 +10,7 @@ export default gql`
         avgrating
         type
         image1
+        image2
         netflixid
       }
       imdbInfo {
