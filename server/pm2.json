@@ -3,7 +3,7 @@
       {
           "name": "flixatic-graphql",
           "script": "./src/app.ts",
-          "instances": "2",
+          "instances": "max",
           "exec_mode": "cluster"
       }
   ]
