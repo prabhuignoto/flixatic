@@ -4,7 +4,7 @@
   "description": "Application Server for Flixatic",
   "scripts": {
     "dev": "nodemon ./src/app.ts",
-    "start": "pm2-runtime start ts-node -- -P ./ecosystem.config.js --env production"
+    "start": "pm2-runtime start ts-node -- -P ./ts-config.json ./src/app.ts"
   },
   "author": "Prabhu Murthy",
   "license": "MIT",
