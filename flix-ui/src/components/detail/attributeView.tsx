@@ -3,7 +3,7 @@ import {
   AttributeWrapper,
   AttributeTitle,
   AttributeValue
-} from "./detail.styles";
+} from "./styles/detail.styles";
 
 interface IAttribute {
   title: string;

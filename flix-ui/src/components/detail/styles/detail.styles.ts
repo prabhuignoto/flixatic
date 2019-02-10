@@ -27,7 +27,7 @@ export const AttributeTitle = styled.span`
   color: #ffbf00;
   font-weight: 500;
   font-size: 0.95rem;
-  padding-left: 0.5rem;
+  padding-left: 0.75rem;
 `;
 export const AttributeValue = styled.span`
   color: #fff;

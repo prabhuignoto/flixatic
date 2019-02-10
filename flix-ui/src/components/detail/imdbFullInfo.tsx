@@ -1,7 +1,7 @@
 import React from "react";
 import { IImdbFullInfo } from "../../types";
 import AttributeView from "./attributeView";
-import { ImdbFullInfoWrapper } from "./imdbFullInfo.styles";
+import { ImdbFullInfoWrapper } from "./styles/imdbFullInfo.styles";
 
 const ImdbFullInfo: React.FunctionComponent<IImdbFullInfo> = ({
   tomatoFresh,

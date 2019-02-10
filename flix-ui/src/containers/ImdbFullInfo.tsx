@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 import ImdbFullInfo from "../components/detail/imdbFullInfo";
 import styled from "styled-components";
-import { ReactComponent as LoadingSVG } from "../assets/rolliong.svg";
+import { ReactComponent as LoadingSVG } from "../assets/rolling.svg";
 
 interface IIMdbFullContainer {
   flixId: string;

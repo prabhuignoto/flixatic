@@ -5,7 +5,7 @@ import {
   CastListTitle,
   CastList,
   CastListItem
-} from "./cast.styles";
+} from "./styles/cast.styles";
 
 interface ICast {
   creator: string[];
@@ -23,8 +23,12 @@ const FilmCast: React.FunctionComponent<ICast> = ({
       <CastListWrapper>
         <CastListTitle>Actors</CastListTitle>
         <CastList>
-          {actor.map(item => (
-            <CastListItem>{item}</CastListItem>
+          {actor && actor.map(item => (
+            <CastListItem>
+              <a href={`https://www.google.com/search?q=${item}`} target="_new">
+                {item}
+              </a>
+            </CastListItem>
           ))}
         </CastList>
       </CastListWrapper>
@@ -33,8 +37,12 @@ const FilmCast: React.FunctionComponent<ICast> = ({
       <CastListWrapper>
         <CastListTitle>Director</CastListTitle>
         <CastList>
-          {director.map(item => (
-            <CastListItem>{item}</CastListItem>
+          {director && director.map(item => (
+            <CastListItem>
+              <a href={`https://www.google.com/search?q=${item}`} target="_new">
+                {item}
+              </a>
+            </CastListItem>
           ))}
         </CastList>
       </CastListWrapper>
@@ -43,8 +51,12 @@ const FilmCast: React.FunctionComponent<ICast> = ({
       <CastListWrapper>
         <CastListTitle>Producers</CastListTitle>
         <CastList>
-          {creator.map(item => (
-            <CastListItem>{item}</CastListItem>
+          {creator && creator.map(item => (
+            <CastListItem>
+              <a href={`https://www.google.com/search?q=${item}`} target="_new">
+                {item}
+              </a>
+            </CastListItem>
           ))}
         </CastList>
       </CastListWrapper>

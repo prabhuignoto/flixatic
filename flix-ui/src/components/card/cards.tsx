@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Wrapper } from "./cards.style";
+import { Wrapper } from "./styles/cards.style";
 import { ICard } from "../../types";
 import { LoadingDetailedView } from "../../action-creators";
 import FlixCard from "../../containers/FlixCard";

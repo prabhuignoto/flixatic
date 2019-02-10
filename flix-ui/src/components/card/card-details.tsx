@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RatingWrapper, StarsWrapper } from "./card.style";
+import { RatingWrapper, StarsWrapper } from "./styles/card.style";
 import Rating from "./rating";
 import Stars from "./stars";
 import {
@@ -12,7 +12,7 @@ import {
   PosedMoreDetails,
   Button,
   ExpandButton
-} from "./card-details-styles";
+} from "./styles/card-details-styles";
 import { ReactComponent as CloseSVG } from "../../assets/close.svg";
 import { ReactComponent as ExpandSVG } from "../../assets/arrow-dropdown.svg";
 

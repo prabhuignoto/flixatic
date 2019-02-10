@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Wrapper, StarWrapper } from "./stars-style";
+import { Wrapper, StarWrapper } from "./styles/stars-style";
 import { ReactComponent as Star } from "../../assets/star.svg";
 import { ReactComponent as StarOutline } from "../../assets/star-outline.svg";
 
@@ -17,14 +17,16 @@ const Stars: React.FunctionComponent<IStars> = ({ rating }) => {
   return (
     <Wrapper>
       {Array(starIterations).fill(0)
+        .map(y => Math.random() * 50)
         .map(x => (
-          <StarWrapper>  
+          <StarWrapper key={x}>
             <Star />
           </StarWrapper>
         ))}
       {Array(5 - starIterations).fill(0)
-        .map(() => (
-          <StarWrapper>
+        .map(() => Math.random() * 100)
+        .map(x => (
+          <StarWrapper key={x}>
             <StarOutline />
           </StarWrapper>
         ))}

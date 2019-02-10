@@ -8,12 +8,12 @@ import {
   DetailWrapperTwo,
   CloseButton,
   PosedDetailPopupContainer
-} from "./detail.styles";
+} from "./styles/detail.styles";
 import ImdbView from "./imdbView";
 import PlotView from "./plotView";
 import FlixView from "./flixView";
 import { ReactComponent as CloseSVG } from "../../assets/close.svg";
-import { FlixTitle, FlixStarsWrapper } from "./flix.styles";
+import { FlixTitle, FlixStarsWrapper } from "./styles/flix.styles";
 import Tab from "../tabs";
 import Stars from "../card/stars";
 import ImdbFullInfo from "../../containers/ImdbFullInfo";

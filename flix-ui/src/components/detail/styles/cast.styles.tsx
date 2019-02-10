@@ -37,4 +37,12 @@ export const CastListItem = styled.li`
   font-size: 0.9rem;
   border: 1px solid #3c3c3c;
   border-radius: 3px;
+  &:hover {
+    background: #3c3c3c;
+    color: #000;
+  }
+  &>a {
+    text-decoration: none;
+    color: #fff;
+  }
 `;

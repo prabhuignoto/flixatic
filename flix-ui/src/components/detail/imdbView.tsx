@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ImdbWrapper } from "./detail.styles";
+import { ImdbWrapper } from "./styles/detail.styles";
 import AttributeView from "./attributeView";
 import { info } from "../../types";
 

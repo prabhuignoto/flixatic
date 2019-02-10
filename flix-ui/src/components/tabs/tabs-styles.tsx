@@ -13,6 +13,9 @@ export const TabHead = styled.li<{ selected: boolean }>`
   &:not(:first-child) {
     margin: 0 0.25rem;
   }
+  &:first-child {
+    margin-right: 0.25rem;
+  }
   min-width: 50px;
   border: ${p => p.selected ? "1px solid rgba(255, 191, 0, 0.5)" : "1px solid #3c3c3c"};
   border-bottom: none;

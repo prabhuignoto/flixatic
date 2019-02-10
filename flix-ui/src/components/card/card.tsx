@@ -1,11 +1,9 @@
 import * as React from "react";
-import { Wrapper, DetailButton } from "./card.style";
+import { Wrapper, DetailButton } from "./styles/card.style";
 import Image from "./image";
-import { ICard } from "../../types";
 import Posed from "react-pose";
 import CardDetails from "./card-details";
-import { ReactComponent as OpenSVG } from "../../assets/open.svg";
-import { ReactComponent as LoadingSVG } from "../../assets/rolliong.svg";
+import { ReactComponent as LoadingSVG } from "../../assets/rolling.svg";
 import { ReactComponent as ErrorSVG } from "../../assets/exclamation.svg";
 
 const PosedWrapper = Posed(Wrapper)({

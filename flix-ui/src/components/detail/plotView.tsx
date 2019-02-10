@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PlotWrapper, PlotHead, PlotBody } from "./plot.styles";
+import { PlotWrapper, PlotHead, PlotBody } from "./styles/plot.styles";
 
 interface IPlot {
   value: string;

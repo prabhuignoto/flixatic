@@ -4,8 +4,8 @@ import {
   FlixImageWrapper,
   FlixImage,
   FlixImageLoadWrapper
-} from "./flix.styles";
-import { ReactComponent as LoadingSVG } from "../../assets/rolliong.svg";
+} from "./styles/flix.styles";
+import { ReactComponent as LoadingSVG } from "../../assets/rolling.svg";
 
 interface IFlixView {
   image1: string;

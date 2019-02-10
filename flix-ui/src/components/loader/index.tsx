@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { ReactComponent as LoadingSVG } from "../../assets/rolliong.svg";
+import { ReactComponent as LoadingSVG } from "../../assets/rolling.svg";
 
 const LoaderWrapper = styled.div`
   width: 4rem;
