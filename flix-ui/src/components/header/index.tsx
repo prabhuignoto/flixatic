@@ -25,7 +25,7 @@ const HeaderView: React.FunctionComponent = () => (
         { value: "Australia", id: "AU" },
         { value: "Netherlands", id: "NL" },
       ]}
-      title={"Choose a country"}
+      title={"Switch country"}
     />
   </Header>
 );

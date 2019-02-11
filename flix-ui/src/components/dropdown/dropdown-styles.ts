@@ -17,7 +17,7 @@ export const DropdownWrapper = styled.div`
   padding: 0.25rem;
   user-select: none;
   cursor: pointer;
-  border: 1px solid #272727;
+  /* border: 1px solid #272727; */
 `;
 
 export const ListWrapper = styled.div`
