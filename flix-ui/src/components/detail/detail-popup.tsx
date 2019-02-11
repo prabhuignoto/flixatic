@@ -11,13 +11,14 @@ import {
 } from "./styles/detail.styles";
 import ImdbView from "./imdbView";
 import PlotView from "./plotView";
-import FlixView from "./flixView";
+import FlixView from "./imageView";
 import { ReactComponent as CloseSVG } from "../../assets/close.svg";
-import { FlixTitle, FlixStarsWrapper } from "./styles/flix.styles";
+import { FlixTitle, FlixStarsWrapper } from "./styles/image.styles";
 import Tab from "../tabs";
 import Stars from "../card/stars";
 import ImdbFullInfo from "../../containers/ImdbFullInfo";
 import Cast from "./cast";
+import ImageGallery from "../../containers/ImageGallery";
 
 const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   imdbInfo,
@@ -30,7 +31,6 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   React.useEffect(() => {
     PopupRef.current.focus();
   });
-
   return (
     <DetailPopupBackdrop
       tabIndex={0}
@@ -45,9 +45,9 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
         <DetailPopupContent>
           <FlixTitle>
             <span>{netflixInfo.title}</span>
-            {netflixInfo.avgrating && (
+            {imdbInfo.rating && (
               <FlixStarsWrapper>
-                <Stars rating={netflixInfo.avgrating} />
+                <Stars rating={imdbInfo.rating} size="large" />
               </FlixStarsWrapper>
             )}
           </FlixTitle>
@@ -72,6 +72,12 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
                 {
                   name: "Cast & Crew",
                   renderView: () => <Cast {...cast} />
+                },
+                {
+                  name: "Boxart & Posters",
+                  renderView: () => (
+                    <ImageGallery flixId={netflixInfo.netflixid} />
+                  )
                 }
               ]}
             />

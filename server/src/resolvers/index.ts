@@ -35,5 +35,10 @@ export default {
         return dataSources.flixApi.getFullImdbInfo(flixId);
       }
     },
+    getPosters(obj: any, { flixId }: IArgs2, { dataSources }: any) {
+      if (flixId) {
+        return dataSources.flixApi.getPosters(flixId);
+      }
+    },
   },
 };

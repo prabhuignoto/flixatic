@@ -53,12 +53,12 @@ export const TabBody = styled.div`
   border: 1px solid #272727;
   border-top: none;
   color: #fff;
-  height: 365px;
+  height: 380px;
   overflow-y: auto;
   background: #1d1d1d;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   border: 1px solid rgba(255, 191, 0, 0.5);
-  box-shadow: 0 -1px 10px 1px rgba(0,0,0,0.5);
+  box-shadow: 0 -1px 10px 1px rgba(0,0,0,0.3);
   overflow-x: hidden;
 `;

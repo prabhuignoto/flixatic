@@ -22,7 +22,8 @@ const HeaderView: React.FunctionComponent = () => (
         { value: "India", id: "IN" },
         { value: "Germany", id: "DE" },
         { value: "Japan", id: "JP" },
-        { value: "Australia", id: "AU" }
+        { value: "Australia", id: "AU" },
+        { value: "Netherlands", id: "NL" },
       ]}
       title={"Choose a country"}
     />

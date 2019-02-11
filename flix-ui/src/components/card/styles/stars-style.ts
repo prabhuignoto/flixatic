@@ -7,8 +7,8 @@ export const Wrapper = styled.div`
   padding: 0.1rem;
 `;
 
-export const StarWrapper = styled.div`
-  width: 1.1rem;
-  height: 1.1rem;
+export const StarWrapper = styled.div<{size?: string}>`
+  width: ${p => p.size === "small" ? "1.1rem" : "2rem"};
+  height: ${p => p.size === "small" ? "1.1rem" : "2rem"};
   position: relative;
 `;

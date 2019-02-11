@@ -4,6 +4,7 @@ export const FlixWrapper = styled.div`
   position: relative;
   min-height: 250px;
   flex: 1;
+  align-self: center;
 `;
 
 export const FlixImageWrapper = styled.div`
@@ -13,7 +14,6 @@ export const FlixImageWrapper = styled.div`
   align-items: center;
   margin-right: 0.25rem;
   box-shadow: inset 0px 0px 20px 1px rgba(0, 0, 0, 0.75);
-  border: 2px solid rgba(255, 191, 0, 0.5);
 `;
 
 export const FlixImageLoadWrapper = styled.div`
@@ -34,6 +34,7 @@ export const FlixImage = styled.img<{ loading: boolean }>`
   height: 100%;
   object-position: 0% 0%;
   display: ${p => (p.loading ? "none" : "block")};
+  border-radius: 3px;
 `;
 
 export const FlixTitle = styled.span`

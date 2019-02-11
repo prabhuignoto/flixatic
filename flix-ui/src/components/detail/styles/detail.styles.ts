@@ -9,12 +9,12 @@ export const AttributeWrapper = styled.div<{ direction: string }>`
   width: 100%;
   padding: 0.75rem 0rem;
   font-size: 0.85rem;
-  &:not(:last-child) {
-    border-bottom: 1px dotted #313131;
+  &:nth-child(even) {
+    background: rgba(49, 49, 49, 0.3);
   }
   & > span {
     &:nth-child(2) {
-      padding-left: ${p => (p.direction === "column" ? "0.5rem" : "")};
+      padding-left: ${p => (p.direction === "column" ? "0.75rem" : "")};
       padding-top: ${p => (p.direction === "column" ? "0.5rem" : "")};
     }
   }
@@ -62,8 +62,8 @@ export const DetailPopupBackdrop = styled.div`
 `;
 
 export const DetailPopupContainer = styled.div`
-  width: 850px;
-  min-height: 300px;
+  width: 900px;
+  min-height: 500px;
   position: relative;
 `;
 
@@ -83,7 +83,7 @@ export const DetailPopupContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1rem 1rem 1.5rem 1rem;
   background: #272727;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
   border-radius: 4px;
@@ -115,6 +115,6 @@ export const CloseButton = styled.button`
   border-radius: 50%;
   cursor: pointer;
   top: 0.5rem;
-  right: -2.5rem;
+  right: -1.25rem;
   background: none;
 `;

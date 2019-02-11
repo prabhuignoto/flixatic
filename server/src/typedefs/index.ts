@@ -58,6 +58,13 @@ export default gql`
     creator: [String!]
   }
 
+  type Poster {
+    type: String!
+    url: String!
+    height: String!
+    width: String!
+  }
+
   type MovieDetails {
     flixInfo: ninfo!
     imdbInfo: imdbinfo!
@@ -104,5 +111,6 @@ export default gql`
     ): [Release!]!
     getMovieDetails(flixId: String!): MovieDetails!
     getFullImdbInfo(flixId: String!): ImdbFullInfo!
+    getPosters(flixId: String!): [Poster!]!
   }
 `;

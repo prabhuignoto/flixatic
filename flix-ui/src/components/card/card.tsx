@@ -76,7 +76,6 @@ export default class FlixCard extends React.Component<
           }
         }}
       >
-        <Image url={image} title={title} blur={isLoading} />
         {!isLoading && (
           <CardDetails
             rating={rating}
@@ -88,6 +87,7 @@ export default class FlixCard extends React.Component<
             isLoading={isLoading}
           />
         )}
+        <Image url={image} title={title} blur={isLoading} />
         {(
           <DetailButton
             title={

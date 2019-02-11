@@ -41,10 +41,9 @@ export default class FlixDataSource extends RESTDataSource {
         people: cast,
       } = response.RESULT as IDetailsResponse;
       // tslint:disable-next-line:no-console
-      console.log(cast.reduce(
-        (prev, current) => Object.assign({}, prev, current),
-        {},
-      ));
+      console.log(
+        cast.reduce((prev, current) => Object.assign({}, prev, current), {}),
+      );
       return {
         cast: cast.reduce(
           (prev, current) => Object.assign({}, prev, current),
@@ -67,6 +66,23 @@ export default class FlixDataSource extends RESTDataSource {
       const query = `?t=getimdb&q=${flixId}`;
       const response = await this.get(query);
       return response;
+    } catch (error) {
+      errorLogger.log({
+        level: "error",
+        message: error,
+      });
+    }
+  }
+
+  public async getPosters(flixId: string) {
+    try {
+      const query = `?t=images&q=${flixId}`;
+      const response = await this.get(query);
+
+      const results = response.RESULTS.map((x: any) => x.image[0]);
+      // tslint:disable-next-line:no-console
+      console.log(results);
+      return results;
     } catch (error) {
       errorLogger.log({
         level: "error",

@@ -64,7 +64,7 @@ export default compose(
         variables: {
           country: countryId,
           page: 1,
-          daysBack: 30
+          daysBack: 15
         },
         onCompleted: ({ getNewReleasesByCountry }: any) => {
           if (getNewReleasesByCountry) {

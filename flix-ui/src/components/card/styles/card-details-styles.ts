@@ -4,12 +4,12 @@ import Posed from "react-pose";
 export const Runtime = styled.span`
   color: #fff;
   margin: 0.25rem 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   `;
 export const Released = styled.span`
   color: #fff;
   margin: 0.25rem 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 `;
 
 export const DetailsHeader = styled.div`
@@ -38,18 +38,24 @@ export const PosedMoreDetails = Posed(MoreDetails)({
 })
 
 export const Details = styled.div<{ show: boolean }>`
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0.2rem;
   position: absolute;
   left: 0;
   width: 97%;
+  height: ${p => p.show ? "95%" : ""};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   cursor: pointer;
-  background: ${p => (p.show ? "rgba(0,0,0,1)" : "rgba(0,0,0,0.9)")};
-  top: 0px;
+  background: #1d1d1d;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.25);
+  bottom: 0px;
   z-index: 10;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top-left-radius: ${p => p.show ? "4px" : ""};
+  border-top-right-radius: ${p => p.show ? "4px" : ""};
 `;
 
 export const PosedDetails = Posed(Details)({
@@ -65,7 +71,7 @@ export const Title = styled.span`
   color: #0080FF;
   text-align: left;
   margin: 0.25rem 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
 `;
 
@@ -73,7 +79,7 @@ export const Synopsis = styled.span`
   color: #fff;
   text-align: left;
   margin: 0.25rem 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 `;
 
 export const Button = styled.button`

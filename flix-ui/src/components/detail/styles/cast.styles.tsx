@@ -11,6 +11,7 @@ export const CastListWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 0.75rem;
+  margin-left: 0.25rem;
 `;
 
 export const CastListTitle = styled.span`
@@ -31,10 +32,10 @@ export const CastList = styled.ul`
 `;
 
 export const CastListItem = styled.li`
-  padding: 0.25rem;
+  padding: 0.4rem;
   white-space: nowrap;
-  margin: 0.25rem 0.25rem 0 0;
-  font-size: 0.9rem;
+  margin: 0.25rem 0.45rem 0 0;
+  font-size: 0.95rem;
   border: 1px solid #3c3c3c;
   border-radius: 3px;
   &:hover {

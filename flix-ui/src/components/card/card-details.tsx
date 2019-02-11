@@ -58,7 +58,6 @@ const CardDetails: React.FunctionComponent<ICardDetails> = ({
         </StarsWrapper>
         {!showMore && (
           <ExpandButton>
-            <ExpandSVG />
           </ExpandButton>
         )}
       </DetailsHeader>
