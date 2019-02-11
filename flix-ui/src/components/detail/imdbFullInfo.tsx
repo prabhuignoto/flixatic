@@ -31,7 +31,6 @@ const ImdbFullInfo: React.FunctionComponent<IImdbFullInfo> = ({
   <ImdbFullInfoWrapper>
     <AttributeView title="IMDB Rating" value={imdbrating} />
     <AttributeView title="IMDB Votes" value={imdbvotes} />
-    <AttributeView title="Plot" value={plot} direction="column" />
     <AttributeView title="IMDB Rating" value={imdbrating} />
     <AttributeView title="Runtime" value={runtime} />
     <AttributeView title="Released" value={released} />

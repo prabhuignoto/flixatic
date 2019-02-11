@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const TabWrapper = styled.div`
   flex: 2;
-  margin-left: 1rem;
   height: 100%;
 `;
 
 export const TabHead = styled.li<{ selected: boolean }>`
   color: #fff;
-  padding: 0.4rem 0.65rem;
+  padding: 0.4rem 0.7rem;
   background: ${p => (p.selected ? "#1d1d1d" : "")};
   &:not(:first-child) {
     margin: 0 0.25rem;
@@ -53,7 +52,7 @@ export const TabBody = styled.div`
   border: 1px solid #272727;
   border-top: none;
   color: #fff;
-  height: 380px;
+  height: 350px;
   overflow-y: auto;
   background: #1d1d1d;
   border-bottom-left-radius: 4px;

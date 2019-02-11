@@ -32,8 +32,9 @@ export const AttributeTitle = styled.span`
 export const AttributeValue = styled.span`
   color: #fff;
   text-align: left;
-  padding-right: 0.5rem;
+  padding-right: 0.75rem;
   font-size: 0.9rem;
+  font-weight: 500;
 `;
 
 export const ImdbWrapper = styled.div`
@@ -43,7 +44,6 @@ export const ImdbWrapper = styled.div`
   width: 100%;
   background: #1d1d1d;
   border-radius: 4px;
-  height: 280px;
   width: 100%;
 `;
 
@@ -62,19 +62,18 @@ export const DetailPopupBackdrop = styled.div`
 `;
 
 export const DetailPopupContainer = styled.div`
-  width: 900px;
-  min-height: 500px;
+  width: 980px;
   position: relative;
 `;
 
 export const PosedDetailPopupContainer = Posed(DetailPopupContainer)({
   open: {
-    transform: "scale(1)",
-    opacity: 1
+    opacity: 1,
+    filter: "blur(0px)"
   },
   close: {
-    transform: "scale(0.9)",
-    opacity: 0
+    opacity: 0,
+    filter: "blur(20px)"
   }
 });
 
@@ -102,7 +101,6 @@ export const DetailWrapperTwo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   flex: 2;
 `;
 
@@ -117,4 +115,18 @@ export const CloseButton = styled.button`
   top: 0.5rem;
   right: -1.25rem;
   background: none;
+`;
+
+export const MinimizeButton = styled.button`
+  width: 1.75rem;
+  height: 1.75rem;
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
+`;
+
+export const MinimizeButtonWrapper = styled.div`
+  align-self: center;
+  margin: 0 0.2rem;
 `;

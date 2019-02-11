@@ -15,18 +15,21 @@ const FlixCards: React.FunctionComponent<ICards> = ({
   items,
   openDetailedView,
   closeDetailedView,
-  loadingDetailedView,
+  loadingDetailedView
 }) => {
-  return (<Wrapper>
-    {items.map((item: ICard) => (
-      <FlixCard
-        {...item}
-        key={item.netflixid}
-        // closeDetailedView={closeDetailedView}
-        loadingDetailedView={loadingDetailedView}
-      />
-    ))}
-  </Wrapper>);
+  return (
+    <Wrapper>
+      {items.map((item: ICard, index: number) => (
+        <FlixCard
+          counterId={(index + 1) % 6}
+          {...item}
+          key={item.netflixid}
+          // closeDetailedView={closeDetailedView}
+          loadingDetailedView={loadingDetailedView}
+        />
+      ))}
+    </Wrapper>
+  );
 };
 
 export default FlixCards;

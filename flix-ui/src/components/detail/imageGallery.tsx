@@ -34,14 +34,14 @@ const ImageGallery: React.FunctionComponent<IGallery> = ({ items }) => {
       </Container> */}
       <Container>
         {logos.map(logo => (
-          <LogoWrapper>
+          <LogoWrapper key={logo.url}>
             <Image src={logo.url} />
           </LogoWrapper>
         ))}
       </Container>
       <Container>
         {backgrounds.map(background => (
-          <BackgroundWrapper>
+          <BackgroundWrapper key={background.url}>
             <Image src={background.url} />
           </BackgroundWrapper>
         ))}

@@ -7,7 +7,9 @@ import {
   DetailWrapperOne,
   DetailWrapperTwo,
   CloseButton,
-  PosedDetailPopupContainer
+  PosedDetailPopupContainer,
+  MinimizeButtonWrapper,
+  MinimizeButton
 } from "./styles/detail.styles";
 import ImdbView from "./imdbView";
 import PlotView from "./plotView";
@@ -19,6 +21,8 @@ import Stars from "../card/stars";
 import ImdbFullInfo from "../../containers/ImdbFullInfo";
 import Cast from "./cast";
 import ImageGallery from "../../containers/ImageGallery";
+import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
+import { ReactComponent as ArrowRight } from "../../assets/arrow-right.svg";
 
 const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   imdbInfo,
@@ -27,6 +31,7 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   close
 }) => {
   const PopupRef = React.useRef(null);
+  const [toggleMinimize, setToggleMinimize] = React.useState(false);
 
   React.useEffect(() => {
     PopupRef.current.focus();
@@ -52,7 +57,16 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
             )}
           </FlixTitle>
           <DetailWrapperOne>
-            <FlixView image1={netflixInfo.image1} image2={netflixInfo.image2} />
+            <FlixView
+              image1={netflixInfo.image1}
+              image2={netflixInfo.image2}
+              minimize={toggleMinimize}
+            />
+            <MinimizeButtonWrapper>
+              <MinimizeButton onClick={() => setToggleMinimize(!toggleMinimize)}>
+                {!toggleMinimize ? <ArrowLeft /> : <ArrowRight />}
+              </MinimizeButton>
+            </MinimizeButtonWrapper>
             <Tab
               items={[
                 {

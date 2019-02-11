@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import posed from "react-pose";
 
 export const FlixWrapper = styled.div`
   position: relative;
@@ -7,8 +8,19 @@ export const FlixWrapper = styled.div`
   align-self: center;
 `;
 
-export const FlixImageWrapper = styled.div`
-  width: 100%;
+export const PosedFlixWrapper = posed(FlixWrapper)({
+  maximize: {
+    flex: 1,
+    width: 0
+  },
+  minimize: {
+    flex: 0,
+    width: "auto"
+  }
+})
+
+export const FlixImageWrapper = styled.div<{minimize: boolean}>`
+  width: ${p => p.minimize ? 0 : "100%"};
   height: 400px;
   display: flex;
   align-items: center;

@@ -30,29 +30,54 @@ interface IProps {
   isLoading: boolean;
   dataLoadFailed: boolean;
   activeFlixId: string;
+  counterId: number;
 }
 
 export default class FlixCard extends React.Component<
   IProps,
-  { hover: boolean }
+  {
+    hover: boolean;
+    gridSpan: {
+      start: number;
+      end: number;
+      enable: boolean;
+    };
+  }
 > {
   constructor(props: IProps) {
     super(props);
     this.state = {
+      gridSpan: {
+        end: props.counterId,
+        start: props.counterId,
+        enable: false
+      },
       hover: false
     };
+    this.setGridSpan = this.setGridSpan.bind(this);
   }
 
   shouldComponentUpdate = (nextProps: IProps, nextState: any) => {
     if (
       nextProps.activeFlixId === String(this.props.netflixid) ||
-      this.state.hover !== nextState.hover
+      this.state.hover !== nextState.hover ||
+      this.state.gridSpan.end !== nextState.gridSpan.end
     ) {
       return true;
     } else {
       return false;
     }
   };
+
+  setGridSpan(start: number, end: number) {
+    this.setState({
+      gridSpan: {
+        start,
+        end,
+        enable: !this.state.gridSpan.enable
+      }
+    });
+  }
 
   render() {
     const {
@@ -65,7 +90,8 @@ export default class FlixCard extends React.Component<
       title,
       released,
       runtime,
-      loadingDetailedView
+      loadingDetailedView,
+      counterId
     } = this.props;
     return (
       <PosedWrapper
@@ -75,6 +101,9 @@ export default class FlixCard extends React.Component<
             loadingDetailedView(netflixid);
           }
         }}
+        start={this.state.gridSpan.start}
+        end={this.state.gridSpan.end}
+        enable={this.state.gridSpan.enable}
       >
         {!isLoading && (
           <CardDetails
@@ -88,7 +117,17 @@ export default class FlixCard extends React.Component<
           />
         )}
         <Image url={image} title={title} blur={isLoading} />
-        {(
+        {/* <button
+          onClick={(ev: React.MouseEvent) => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            this.setGridSpan(
+              this.state.gridSpan.start,
+              this.state.gridSpan.start + 2
+            );
+          }}
+        >expand</button> */}
+        {
           <DetailButton
             title={
               dataLoadFailed
@@ -101,7 +140,7 @@ export default class FlixCard extends React.Component<
             {/* {!isLoading && !dataLoadFailed && <OpenSVG />} */}
             {dataLoadFailed && <ErrorSVG />}
           </DetailButton>
-        )}
+        }
       </PosedWrapper>
     );
   }

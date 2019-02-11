@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{
+  start: number;
+  end: number;
+  enable: boolean;
+}>`
   height: 100%;
   width: 100%;
   position: relative;
@@ -9,7 +13,10 @@ export const Wrapper = styled.div`
   cursor: pointer;
   &:hover {
     filter: brightness(1.2);
-  }
+  };
+  transition: all 1s ease;
+  grid-column: ${p =>
+    p.enable ? `${p.start}/${p.end}` : "0/0"};
 `;
 
 export const RatingWrapper = styled.div`

@@ -5,21 +5,27 @@ import {
   FlixImage,
   FlixImageLoadWrapper,
   FlixImageSliders,
-  FlixImageControls
+  FlixImageControls,
+  PosedFlixWrapper
 } from "./styles/image.styles";
 import { ReactComponent as LoadingSVG } from "../../assets/rolling.svg";
 
 interface IFlixView {
   image1: string;
   image2: string;
+  minimize: boolean;
 }
 
-const FlixView: React.FunctionComponent<IFlixView> = ({ image1, image2 }) => {
+const FlixView: React.FunctionComponent<IFlixView> = ({
+  image1,
+  image2,
+  minimize
+}) => {
   const [loading, setLoading] = React.useState(true);
 
   return (
-    <FlixWrapper>
-      <FlixImageWrapper>
+    <PosedFlixWrapper pose={minimize ? "minimize" : "maximize"} initialPose={"maximize"}>
+      <FlixImageWrapper minimize={minimize}>
         <FlixImage
           src={image1}
           onLoad={() => setLoading(false)}
@@ -31,7 +37,7 @@ const FlixView: React.FunctionComponent<IFlixView> = ({ image1, image2 }) => {
           </FlixImageLoadWrapper>
         )}
       </FlixImageWrapper>
-    </FlixWrapper>
+    </PosedFlixWrapper>
   );
 };
 
