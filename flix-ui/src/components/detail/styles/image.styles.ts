@@ -11,21 +11,30 @@ export const FlixWrapper = styled.div`
 export const PosedFlixWrapper = posed(FlixWrapper)({
   maximize: {
     flex: 1,
-    width: 0
+    opacity: 1,
+    transition: {
+      duration: 300,
+      ease: "linear"
+    }
   },
   minimize: {
     flex: 0,
-    width: "auto"
+    opacity: 0,
+    transition: {
+      duration: 300,
+      ease: "linear"
+    }
   }
-})
+});
 
-export const FlixImageWrapper = styled.div<{minimize: boolean}>`
-  width: ${p => p.minimize ? 0 : "100%"};
+export const FlixImageWrapper = styled.div<{ minimize: boolean }>`
+  width: ${p => (p.minimize ? 0 : "100%")};
   height: 400px;
   display: flex;
   align-items: center;
   margin-right: 0.25rem;
   box-shadow: inset 0px 0px 20px 1px rgba(0, 0, 0, 0.75);
+  border-radius: 3px;
 `;
 
 export const FlixImageLoadWrapper = styled.div`
@@ -41,18 +50,19 @@ export const FlixImageLoadWrapper = styled.div`
 `;
 
 export const FlixImage = styled.img<{ loading: boolean }>`
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
-  height: 100%;
-  object-position: 0% 0%;
+  height: 90%;
+  object-position: 50% 0%;
   display: ${p => (p.loading ? "none" : "block")};
   border-radius: 3px;
 `;
 
 export const FlixTitle = styled.span`
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 1rem;
+  margin-right: 0.5rem;
   color: #ffbf00;
   text-align: left;
   margin-left: 0.5rem;
@@ -77,13 +87,13 @@ export const FlixImageControls = styled.ul`
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  bottom: 1rem;  
+  bottom: 1rem;
   height: 30px;
   width: 100px;
 `;
 
-export const FlixImageControl = styled.li<{selected: boolean}>`
-  background: ${p => p.selected ? "#fff": "#000"};
+export const FlixImageControl = styled.li<{ selected: boolean }>`
+  background: ${p => (p.selected ? "#fff" : "#000")};
   border: 1px solid #fff;
   border-radius: 50%;
   width: 2rem;

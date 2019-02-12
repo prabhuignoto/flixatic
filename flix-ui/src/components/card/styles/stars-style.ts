@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const StarWrapper = styled.div<{size?: string}>`
-  width: ${p => p.size === "small" ? "1.1rem" : "2rem"};
-  height: ${p => p.size === "small" ? "1.1rem" : "2rem"};
+  width: ${p => p.size === "small" ? "1.1rem" : "1.5rem"};
+  height: ${p => p.size === "small" ? "1.1rem" : "1.5rem"};
   position: relative;
 `;

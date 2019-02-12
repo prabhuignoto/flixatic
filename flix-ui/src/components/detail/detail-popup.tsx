@@ -36,6 +36,7 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
   React.useEffect(() => {
     PopupRef.current.focus();
   });
+  
   return (
     <DetailPopupBackdrop
       tabIndex={0}
