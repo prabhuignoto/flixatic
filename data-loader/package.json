@@ -1,0 +1,31 @@
+{
+  "name": "data-loader",
+  "version": "1.0.0",
+  "description": "Data Loader for flix-server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./index.js",
+    "start": "ts-node ./index.ts"
+  },
+  "author": "Prabhu Murthy",
+  "license": "MIT",
+  "dependencies": {
+    "@types/async": "^2.4.1",
+    "@types/dotenv": "^6.1.0",
+    "@types/mongodb": "^3.1.19",
+    "@types/node": "^11.9.3",
+    "@types/node-fetch": "^2.1.6",
+    "@types/request-promise": "^4.1.42",
+    "@types/sharp": "^0.21.2",
+    "async": "^2.6.2",
+    "dotenv": "^6.2.0",
+    "mongodb": "^3.1.13",
+    "node-fetch": "^2.3.0",
+    "node-schedule": "^1.3.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "sharp": "^0.21.3",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  }
+}

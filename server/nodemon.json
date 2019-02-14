@@ -2,7 +2,7 @@
   "ignore": [".git", "node_modules/**/node_modules"],
   "verbose": true,
   "execMap": {
-    "ts": "ts-node"
+    "ts": "ts-node --project ./tsconfig.json"
   },
   "watch": [
     "src/app.ts",

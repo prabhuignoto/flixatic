@@ -13,11 +13,10 @@ export const DropdownWrapper = styled.div`
   margin: 1rem 0;
   background: #1d1d1d;
   border-radius: 4px;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.8);
   padding: 0.25rem;
   user-select: none;
   cursor: pointer;
-  /* border: 1px solid #272727; */
 `;
 
 export const ListWrapper = styled.div`
@@ -33,6 +32,7 @@ export const ListWrapper = styled.div`
   top: 50px;
   width: 100%;
   z-index: 100;
+  outline: none;
 `;
 
 export const PosedListWrapper = Posed(ListWrapper)({

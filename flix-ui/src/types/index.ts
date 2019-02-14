@@ -13,6 +13,7 @@ export interface ICard {
   loadingDetailedView: (flixid: string) => void;
   isLoading: boolean;
   dataLoadFailed: boolean;
+  base64: string;
 }
 
 export interface DetailedInfo {

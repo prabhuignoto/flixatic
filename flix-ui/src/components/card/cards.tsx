@@ -23,6 +23,7 @@ const FlixCards: React.FunctionComponent<ICards> = ({
         <FlixCard
           counterId={(index + 1) % 6}
           {...item}
+          base64={item.base64}
           key={item.netflixid}
           // closeDetailedView={closeDetailedView}
           loadingDetailedView={loadingDetailedView}

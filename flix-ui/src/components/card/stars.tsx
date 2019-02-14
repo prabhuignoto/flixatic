@@ -19,7 +19,7 @@ const Stars: React.FunctionComponent<IStars> = ({ rating, size = "small" }) => {
     <Wrapper>
       {Array(starIterations)
         .fill(0)
-        .map(y => Math.random() * 50)
+        .map(y => Math.random() * 20)
         .map(x => (
           <StarWrapper key={x} size={size}>
             <Star />
@@ -27,7 +27,7 @@ const Stars: React.FunctionComponent<IStars> = ({ rating, size = "small" }) => {
         ))}
       {Array(5 - starIterations)
         .fill(0)
-        .map(() => Math.random() * 100)
+        .map(() => Math.random() * 20)
         .map(x => (
           <StarWrapper key={x} size={size}>
             <StarOutline />

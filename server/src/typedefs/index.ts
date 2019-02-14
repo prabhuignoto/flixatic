@@ -14,6 +14,7 @@ export default gql`
     unogsdate: String!
     imdbid: String!
     download: String!
+    base64: String
   }
 
   type Country {

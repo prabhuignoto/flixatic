@@ -31,6 +31,7 @@ interface IProps {
   dataLoadFailed: boolean;
   activeFlixId: string;
   counterId: number;
+  base64: string;
 }
 
 export default class FlixCard extends React.Component<
@@ -91,6 +92,7 @@ export default class FlixCard extends React.Component<
       released,
       runtime,
       loadingDetailedView,
+      base64,
       counterId
     } = this.props;
     return (
@@ -105,7 +107,7 @@ export default class FlixCard extends React.Component<
         end={this.state.gridSpan.end}
         enable={this.state.gridSpan.enable}
       >
-        {!isLoading && (
+        {/* {!isLoading && (
           <CardDetails
             rating={rating}
             netflixid={netflixid}
@@ -115,8 +117,13 @@ export default class FlixCard extends React.Component<
             released={released}
             isLoading={isLoading}
           />
-        )}
-        <Image url={image} title={title} blur={isLoading} />
+        )} */}
+        <Image
+          url={image}
+          fallback={`data:image/jpeg;base64,${base64}`}
+          title={title}
+          blur={isLoading}
+        />
         {/* <button
           onClick={(ev: React.MouseEvent) => {
             ev.preventDefault();
