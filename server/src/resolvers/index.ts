@@ -29,7 +29,9 @@ export default {
         await MongoClient.connect();
         const dataBase = MongoClient.db(dbName);
         const response = await dataBase.collection("flix").find({
-          country,
+          countries: {
+            $in : [country],
+          },
         }).toArray();
         return response;
       }

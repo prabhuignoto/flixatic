@@ -1,6 +1,7 @@
 import Dotenv from "dotenv";
 import Downloader from "./download-flix-data";
 import GenImages from "./generateImages";
+import LoadTitleDetails from "./load-title-details";
 
 Dotenv.config();
 

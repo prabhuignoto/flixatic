@@ -9,7 +9,7 @@ export const Wrapper = styled.div<{
   width: 100%;
   position: relative;
   border-radius: 2px;
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.75);
   cursor: pointer;
   &:hover {
     filter: brightness(1.2);

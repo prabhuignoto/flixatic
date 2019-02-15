@@ -1,11 +1,21 @@
+import { LogoWrapper } from "./../flix-ui/src/components/detail/styles/imageGallery.styles";
+import Async from "async";
 const MongoDB = require("mongodb");
 import fetch from "node-fetch";
 import { flix } from "./types";
+import chalk from "chalk";
+const log = console.log;
+
+const logInfo = (msg: string) => log(chalk.blueBright(msg));
+const errorInfo = (msg: string) => log(chalk.redBright(msg));
 
 export default async (
   resolve: (result: boolean) => void,
   reject: (result: boolean) => void
 ) => {
+  logInfo("*********** Starting Download *************");
+  logInfo("Connecting to database");
+
   // mongo connection url
   const mongoURL = process.env.MONGO_DB_URL;
   // mongo database name
@@ -30,6 +40,7 @@ export default async (
     const client = new MongoDB.MongoClient(mongoURL);
     await client.connect();
     const dataBase = client.db(dbName);
+    logInfo("Connected to DB Successfully");
 
     // check if the collection exists if not create one
     const collections = await dataBase
@@ -48,42 +59,68 @@ export default async (
 
     // fire up multiple queries to fetch flix data for different countries
     // wait for all the requests to complete
-    const response = await Promise.all(
-      countriesToProcess.map(
-        country =>
-          new Promise(async (resolve, reject) => {
-            const response = await fetch(
-              `${uNoGsAPI}?q=get:new${daysBackData}:${country}&p=${1}&t=ns&st=adv`,
-              {
-                headers: {
-                  "X-RapidAPI-Key": apiKey as string
-                }
-              }
-            );
-            const data = await response.json();
 
-            if (data) {
-              data.ITEMS = data.ITEMS.map((x: flix) =>
-                Object.assign({}, x, {
-                  country
-                })
+    let completeCollection: any[] = [];
+
+    logInfo("Prechecks complete");
+    logInfo("Starting download");
+
+    await new Promise((resolve, reject) => {
+      Async.parallel(
+        countriesToProcess.map((country: string) => (pCallback: any) => {
+          let page = 0;
+          Async.doWhilst(
+            async function(callback) {
+              logInfo(
+                `Fetching data for ${uNoGsAPI}?q=get:new${daysBackData}:${country}&p=${page}&t=ns&st=adv}`
               );
+              const response = await fetch(
+                `${uNoGsAPI}?q=get:new${daysBackData}:${country}&p=${++page}&t=ns&st=adv`,
+                {
+                  headers: {
+                    "X-RapidAPI-Key": apiKey as string
+                  }
+                }
+              );
+              const data = await response.json();
+              data.ITEMS = data.ITEMS.map((x: flix) =>
+                Object.assign({}, x, { country })
+              );
+              return data;
+            },
+            result => {
+              const _result = result as {
+                COUNT: string;
+                ITEMS: any[];
+              };
+              completeCollection = completeCollection.concat(_result.ITEMS);
+              return _result.ITEMS.length > 0;
+            },
+            error => {
+              if (error) {
+                console.log("Failed to process data");
+                errorInfo("Failed to complete the download");
+              }
+              pCallback();
             }
-            resolve(data);
-          })
-      )
-    );
-    // pick the ITEMS attributes and flatten the result in to a single array
-    const itemsArray = response.map((value: any) => [...value.ITEMS]);
-
-    const completeCollection = itemsArray.reduce(
-      (prev: any, current: any) => [].concat(prev, current),
-      []
-    );
+          );
+        }),
+        (error, results) => {
+          if (!error) {
+            resolve(true);
+          } else {
+            errorInfo("Failed to complete parallel download");
+          }
+        }
+      );
+    });
 
     // iterate through the collection and make sure duplicate entries are removed
     // Basically if you have the same show available on multiple countries, then this function will update
     // the countries attribute.
+
+    logInfo("Parallel download complete. Removing duplicate entries");
+
     completeCollection.forEach(async (flix, index) => {
       const flixIndex = localFlixCollection.findIndex(
         x => x.netflixid === flix.netflixid
@@ -111,10 +148,13 @@ export default async (
       if (index === completeCollection.length - 1) {
         await flixCollection.insertMany(localFlixCollection);
         client.close();
+        logInfo("Finished removing duplicates");
         resolve(true);
       }
     });
   } catch (error) {
+    errorInfo("Failed to remove the duplicates");
+    log(error);
     reject(false);
   }
 };

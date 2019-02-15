@@ -15,8 +15,8 @@ export const Wrapper = styled.div`
   @media (min-width: 992px) {
     grid-template-columns: repeat(6, 1fr);
   }
-  grid-auto-rows: 280px;
-  grid-column-gap: 25px;
+  grid-auto-rows: 300px;
+  grid-column-gap: 20px;
   grid-row-gap: 30px;
   align-items: center;
   justify-content: center;

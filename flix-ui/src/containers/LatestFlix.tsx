@@ -1,4 +1,4 @@
-import { graphql } from "react-apollo";
+import { Query } from "react-apollo";
 import FlixCards from "../components/card/cards";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -9,9 +9,7 @@ import {
   FlixDataLoaded,
   LoadingDetailedView
 } from "../action-creators";
-import { compose } from "react-apollo";
-import Store from "../store";
-import { IState, ICard, IStateCard } from "../types";
+import { IState, ICard } from "../types";
 import FlixQuery from "../gql/flixQuery";
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -33,51 +31,55 @@ interface IProps {
   countryId: string;
 }
 
-class Cards extends React.Component<IProps> {
+interface IVState {
+  country: string;
+}
+
+class Cards extends React.Component<IProps, IVState> {
   constructor(props: IProps) {
     super(props);
   }
 
+  shouldComponentUpdate(nextProps: IProps, nextState: IVState) {
+    if (nextProps.countryId !== this.props.countryId) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
-    const { cards, close, loading } = this.props;
     return (
-      <FlixCards
-        items={cards}
-        openDetailedView={open}
-        closeDetailedView={close}
-        loadingDetailedView={loading}
-      />
+      <Query
+        query={FlixQuery}
+        variables={{ country: this.props.countryId, page: 1, daysBack: 15 }}
+      >
+        {({ data, error, loading }) => {
+          if (loading) {
+            return <span>loading</span>;
+          }
+
+          if (!loading && data) {
+            return (
+              <FlixCards
+                items={data.getNewReleasesByCountry}
+                openDetailedView={this.props.open}
+                closeDetailedView={this.props.close}
+                loadingDetailedView={this.props.loading}
+              />
+            );
+          }
+
+          if (error) {
+            return <span>Errored</span>;
+          }
+        }}
+      </Query>
     );
   }
 }
 
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  graphql(FlixQuery, {
-    // can we do this in a better way
-    skip: ({cards}: IProps) => cards.length > 0,
-    options: ({ countryId }: IProps) => {
-      return {
-        variables: {
-          country: countryId,
-          page: 1,
-          daysBack: 15
-        },
-        onCompleted: ({ getNewReleasesByCountry }: any) => {
-          if (getNewReleasesByCountry) {
-            const modData = getNewReleasesByCountry.map((x: any) =>
-              Object.assign({}, x, {
-                isLoading: false,
-                dataLoadFailed: false
-              })
-            );
-            Store.dispatch(FlixDataLoaded(modData));
-          }
-        }
-      };
-    }
-  })
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(Cards);
