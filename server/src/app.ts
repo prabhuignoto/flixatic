@@ -34,8 +34,8 @@ app.use(BodyParser.json());
 app.use(Morgan("short"));
 app.use(
   cors({
-    // origin: "https://flixatic.netlify.com",
-    origin: "*",
+    origin: "https://flixatic.netlify.com",
+    // origin: "*",
   }),
 );
 
