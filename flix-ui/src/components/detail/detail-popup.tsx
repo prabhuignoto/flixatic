@@ -46,8 +46,10 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
           close("");
         }
       }}
+      onClick={(ev: React.MouseEvent) => {
+      }}
     >
-      <PosedDetailPopupContainer pose="open" initialPose={"close"}>
+      <PosedDetailPopupContainer pose="open" initialPose={"close"} className="detail-popup-container">
         <DetailPopupContent>
           <FlixTitle>
             <span>{netflixInfo.title}</span>
@@ -62,6 +64,8 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
               image1={netflixInfo.image1}
               image2={netflixInfo.image2}
               minimize={toggleMinimize}
+              base64={netflixInfo.base64}
+              netflixid={netflixInfo.netflixid}
             />
             <MinimizeButtonWrapper>
               <MinimizeButton onClick={() => setToggleMinimize(!toggleMinimize)}>

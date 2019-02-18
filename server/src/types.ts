@@ -48,6 +48,6 @@ export interface IImdbInfo {
 
 export interface IDetailsResponse {
   nfinfo: INinfo;
-  imdbinfo: IImdbInfo;
-  people: Array<{ [key: string]: string[] }>;
+  imdbInfo: IImdbInfo;
+  cast: Array<{ [key: string]: string[] }>;
 }

@@ -12,6 +12,7 @@ export default gql`
         image1
         image2
         netflixid
+        base64
       }
       imdbInfo {
         rating

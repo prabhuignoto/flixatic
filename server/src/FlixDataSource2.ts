@@ -36,19 +36,12 @@ export default class FlixDataSource extends RESTDataSource {
       const query = `?t=loadvideo&q=${flixID}`;
       const response = await this.get(query);
       const {
+        cast,
         nfinfo: flixInfo,
-        imdbinfo: imdbInfo,
-        people: cast,
+        imdbInfo,
       } = response.RESULT as IDetailsResponse;
-      // tslint:disable-next-line:no-console
-      console.log(
-        cast.reduce((prev, current) => Object.assign({}, prev, current), {}),
-      );
       return {
-        cast: cast.reduce(
-          (prev, current) => Object.assign({}, prev, current),
-          {},
-        ),
+        cast,
         flixInfo,
         imdbInfo,
       };

@@ -38,19 +38,20 @@ export default gql`
     runtime: String!
     image2: String!
     download: String!
+    base64: String!
   }
 
   type imdbinfo {
-    rating: String!
-    votes: String!
-    metascore: String!
-    genre: String!
-    awards: String!
-    runtime: String!
-    plot: String!
-    country: String!
-    language: String!
-    imdbid: String!
+    rating: String
+    votes: String
+    metascore: String
+    genre: String
+    awards: String
+    runtime: String
+    plot: String
+    country: String
+    language: String
+    imdbid: String
   }
 
   type Cast {

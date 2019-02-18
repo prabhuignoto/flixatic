@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { ReactComponent as FilmSVG } from "../../assets/film-reel.svg";
+import { ReactComponent as FilmSVG } from "../../assets/film.svg";
 
 const Logo = styled.div`
   font-size: 2.5rem;
@@ -29,7 +29,7 @@ const LogoView: React.FunctionComponent = () => (
     <LogoImage>
       <FilmSVG />
     </LogoImage>
-    <Logo>Flixatic</Logo>
+    <Logo>FLIXATIC</Logo>
   </LogoContainer>
 );
 

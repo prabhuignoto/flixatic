@@ -1,3 +1,4 @@
+export { IDetailsResponse } from './../server/src/types';
 export interface flix {
   image: string;
   rating: string;

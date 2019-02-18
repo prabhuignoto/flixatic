@@ -6,6 +6,7 @@ export const FlixWrapper = styled.div`
   min-height: 250px;
   flex: 1;
   align-self: center;
+  padding: 1rem;
 `;
 
 export const PosedFlixWrapper = posed(FlixWrapper)({
@@ -49,14 +50,31 @@ export const FlixImageLoadWrapper = styled.div`
   transform: translateY(-50%);
 `;
 
-export const FlixImage = styled.img<{ loading: boolean }>`
-  object-fit: contain;
-  width: 100%;
+export const FlixImage = styled.img<{ loading?: boolean }>`
+  object-fit: ${p => p.loading ? "cover" : "contain"};
+  width: 90%;
   height: 90%;
   object-position: 50% 0%;
-  display: ${p => (p.loading ? "none" : "block")};
   border-radius: 3px;
+  margin: 0 auto;
 `;
+
+export const PosedFlixImage = posed(FlixImage)({
+  open: {
+    filter: "blur(0px)",
+    opacity: 1,
+    transition: {
+      delay: 300,
+      duration: 700,
+      type: "spring",
+      ease: "linear"
+    }
+  },
+  close: {
+    filter: "blur(4px)",
+    opacity: 0.95
+  }
+})
 
 export const FlixTitle = styled.span`
   font-size: 1rem;
