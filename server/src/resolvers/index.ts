@@ -1,8 +1,8 @@
 import { config } from "dotenv";
 import "node-fetch";
 import MongoClient from "../getClient";
-import { IDetailsResponse } from "../types";
 import errorLogger from "../loggers/error";
+import { IDetailsResponse } from "../types";
 
 interface IArgs {
   country: string;
@@ -25,7 +25,7 @@ export default {
     async getNewReleasesByCountry(
       obj: any,
       { country, page, daysBack }: IArgs,
-      { dataSources }: any,
+      { dataSources }: any
     ) {
       try {
         if (country && page && daysBack) {
@@ -44,7 +44,7 @@ export default {
       } catch (error) {
         errorLogger.log({
           level: "error",
-          message: `Failed to retrieve the new releases \n ${error}`,
+          message: `Failed to retrieve the new releases \n ${error}`
         });
       }
     },
@@ -53,26 +53,51 @@ export default {
         if (flixId) {
           await MongoClient.connect();
           const dataBase = MongoClient.db(dbName);
-          const response = await dataBase
-            .collection("flix_details")
-            .findOne({
-              "nfinfo.netflixid": flixId,
-            });
+          const response = await dataBase.collection("flix_details").findOne({
+            "nfinfo.netflixid": flixId
+          });
           const {
             nfinfo: flixInfo,
             imdbInfo,
-            cast,
+            cast
           } = (response as unknown) as IDetailsResponse;
           return {
             cast,
             flixInfo,
-            imdbInfo,
+            imdbInfo
           };
         }
       } catch (error) {
         errorLogger.log({
           level: "error",
-          message: `Failed to retrieve the get Movie details \n ${error}`,
+          message: `Failed to retrieve the get Movie details \n ${error}`
+        });
+      }
+    },
+    async getReleasesByType(
+      obj: any,
+      { type, country }: { type: string; country: string },
+      { dataSources }: any
+    ) {
+      try {
+        if (type) {
+          await MongoClient.connect();
+          const datBase = MongoClient.db(dbName);
+          const response = await datBase
+            .collection("flix")
+            .find({
+              countries: {
+                $in: [country],
+              },
+              type,
+            })
+            .toArray();
+          return response;
+        }
+      } catch (error) {
+        errorLogger.log({
+          level: "error",
+          message: `Failed to retrieve the Titles for Filter \n ${error}`
         });
       }
     },

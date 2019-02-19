@@ -6,7 +6,6 @@ export const FlixWrapper = styled.div`
   min-height: 250px;
   flex: 1;
   align-self: center;
-  padding: 1rem;
 `;
 
 export const PosedFlixWrapper = posed(FlixWrapper)({

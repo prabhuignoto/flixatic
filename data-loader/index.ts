@@ -8,8 +8,8 @@ Dotenv.config();
 
 async function Main() {
   try {
-    // await new Promise(Downloader);
-    // await new Promise(GenImages);
+    await new Promise(Downloader);
+    await new Promise(GenImages);
     await new Promise(GetFlixDetails);
   } catch (error) {
     console.log("Failed to process data");

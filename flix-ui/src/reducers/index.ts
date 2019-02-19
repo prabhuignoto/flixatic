@@ -1,4 +1,8 @@
-import { FLIX_DATA_LOAD_FAILED, CHANGE_COUNTRY } from "./../actions/index";
+import {
+  FLIX_DATA_LOAD_FAILED,
+  CHANGE_COUNTRY,
+  UPDATE_FILTER
+} from "./../actions/index";
 import { IState } from "./../types/index";
 import {
   OPEN_DETAILED_VIEW,
@@ -19,6 +23,22 @@ const State: IState = {
   country: {
     id: "US",
     value: "United States"
+  },
+  filter: {
+    type: ""
+  },
+  settings: {
+    filter: {
+      default: {
+        name: "All",
+        value: "all"
+      },
+      types: [
+        { name: "Movie", value: "movie" },
+        { name: "Series", value: "series" },
+        { name: "All", value: "" }
+      ]
+    }
   }
 };
 
@@ -57,6 +77,10 @@ export default function(state: IState = State, action: any) {
           isFlixFailedToLoad: true,
           isFlixLoading: false
         }
+      });
+    case UPDATE_FILTER:
+      return Object.assign({}, state, {
+        filter: action.filter
       });
     case FLIX_DATA_LOADED:
       return Object.assign({}, state, {

@@ -6,11 +6,11 @@ import * as React from "react";
 import {
   OpenDetailedViewAction,
   CloseDetailedViewAction,
-  FlixDataLoaded,
   LoadingDetailedView
 } from "../action-creators";
 import { IState, ICard } from "../types";
 import FlixQuery from "../gql/flixQuery";
+import GetTitlesByType from "../gql/getTitlesByQuery";
 import styled from "styled-components";
 import { ReactComponent as SpinnerSVG } from "../assets/rolling.svg";
 
@@ -20,9 +20,14 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   loading: (flixId: string) => dispatch(LoadingDetailedView(flixId))
 });
 
-const mapStateToProps = ({ cards, country: { id } }: IState) => ({
+const mapStateToProps = ({
   cards,
-  countryId: id
+  country: { id },
+  filter: { type }
+}: IState) => ({
+  cards,
+  countryId: id,
+  type
 });
 
 const LatestFlixContainer = styled.div`
@@ -40,7 +45,7 @@ const Loader = styled.div`
   top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
-  color: #FFC30B;
+  color: #ffc30b;
 `;
 
 interface IProps {
@@ -49,6 +54,7 @@ interface IProps {
   loading: (id: string) => void;
   cards: ICard[];
   countryId: string;
+  type: string;
 }
 
 interface IVState {
@@ -61,7 +67,10 @@ class Cards extends React.Component<IProps, IVState> {
   }
 
   shouldComponentUpdate(nextProps: IProps, nextState: IVState) {
-    if (nextProps.countryId !== this.props.countryId) {
+    if (
+      nextProps.countryId !== this.props.countryId ||
+      nextProps.type !== this.props.type
+    ) {
       return true;
     } else {
       return false;
@@ -69,25 +78,32 @@ class Cards extends React.Component<IProps, IVState> {
   }
 
   render() {
+    debugger;
+    const query = this.props.type ? GetTitlesByType : FlixQuery;
+    const variables = this.props.type
+      ? { type: this.props.type, country: this.props.countryId }
+      : { country: this.props.countryId, page: 1, daysBack: 15 };
+
     return (
       <LatestFlixContainer>
         <Query
-          query={FlixQuery}
-          variables={{ country: this.props.countryId, page: 1, daysBack: 15 }}
+          query={query}
+          variables={variables}
+          fetchPolicy={"network-only"}
         >
           {({ data, error, loading }) => {
             if (loading) {
-              return (
-                <Loader>
-                  Loading ...
-                </Loader>
-              );
+              return <Loader>Loading ...</Loader>;
             }
 
             if (!loading && data) {
               return (
                 <FlixCards
-                  items={data.getNewReleasesByCountry}
+                  items={
+                    this.props.type
+                      ? data.getReleasesByType
+                      : data.getNewReleasesByCountry
+                  }
                   openDetailedView={this.props.open}
                   closeDetailedView={this.props.close}
                   loadingDetailedView={this.props.loading}

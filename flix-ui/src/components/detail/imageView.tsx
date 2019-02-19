@@ -15,15 +15,14 @@ interface IFlixView {
   image1: string;
   image2: string;
   minimize: boolean;
-  base64: string;
+  fallback: string;
   netflixid: string;
 }
 
 const FlixView: React.FunctionComponent<IFlixView> = ({
   image1,
-  image2,
   minimize,
-  base64,
+  fallback,
   netflixid
 }) => {
   const [loaded, setLoaded] = React.useState(false);
@@ -34,11 +33,11 @@ const FlixView: React.FunctionComponent<IFlixView> = ({
     >
       <FlixImageWrapper minimize={minimize}>
         <PosedFlixImage
-          src={loaded ? image1 : `data:image/jpeg;base64,${base64}`}
+          src={loaded ? image1 : fallback}
           loading={!loaded}
           initialPose="close"
           key={netflixid}
-          pose={loaded ? "open" : ""}
+          pose={loaded ? "open" : "close"}
         />
         <img
           style={{ display: "none" }}

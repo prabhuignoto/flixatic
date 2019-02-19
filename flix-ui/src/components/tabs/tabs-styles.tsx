@@ -19,8 +19,8 @@ export const TabHead = styled.li<{ selected: boolean }>`
   border: ${p => p.selected ? "1px solid rgba(255, 191, 0, 0.5)" : "1px solid #3c3c3c"};
   border-bottom: none;
 
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
   cursor: pointer;
   font-size: 1rem;
   position: relative;

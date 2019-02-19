@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import LogoView from "../logo";
 import CountryDropdown from "../../containers/CountryDropdown";
+// import RadioGroup from "../../components/radio-group";
+import RadioGroupTitleType from "../../containers/filterByType";
 
 const Header = styled.header`
   display: flex;
@@ -15,18 +17,6 @@ const Header = styled.header`
 const HeaderView: React.FunctionComponent = () => (
   <Header>
     <LogoView />
-    <CountryDropdown
-      items={[
-        { value: "United States", id: "US" },
-        { value: "United Kingdom", id: "GB" },
-        { value: "India", id: "IN" },
-        { value: "Germany", id: "DE" },
-        { value: "Japan", id: "JP" },
-        { value: "Australia", id: "AU" },
-        { value: "Netherlands", id: "NL" },
-      ]}
-      title={"Switch country"}
-    />
   </Header>
 );
 

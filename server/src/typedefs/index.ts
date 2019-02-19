@@ -114,5 +114,6 @@ export default gql`
     getMovieDetails(flixId: String!): MovieDetails!
     getFullImdbInfo(flixId: String!): ImdbFullInfo!
     getPosters(flixId: String!): [Poster!]!
+    getReleasesByType(type: String!, country: String!): [Release!]!
   }
 `;

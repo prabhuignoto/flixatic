@@ -64,7 +64,7 @@ const DetailPopup: React.FunctionComponent<IDetailPopup> = ({
               image1={netflixInfo.image1}
               image2={netflixInfo.image2}
               minimize={toggleMinimize}
-              base64={netflixInfo.base64}
+              fallback={`data:image/jpeg;base64,${netflixInfo.base64}`}
               netflixid={netflixInfo.netflixid}
             />
             <MinimizeButtonWrapper>

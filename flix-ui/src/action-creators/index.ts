@@ -5,8 +5,10 @@ import {
   LOADING_DETAILED_VIEW,
   FLIX_DATA_LOADED,
   FLIX_DATA_LOAD_FAILED,
-  CHANGE_COUNTRY
+  CHANGE_COUNTRY,
+  UPDATE_FILTER
 } from "./../actions/index";
+import { IFilter } from "../types";
 
 export const OpenDetailedViewAction = (flixId: string) => ({
   type: OPEN_DETAILED_VIEW,
@@ -44,4 +46,9 @@ export const UpdateCountry = (value: string, id: string)=> ({
   type: CHANGE_COUNTRY,
   country: value,
   id
-}) 
+});
+
+export const UpdateFilter = (filter: IFilter) => ({
+  type: UPDATE_FILTER,
+  filter
+})

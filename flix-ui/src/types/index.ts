@@ -28,6 +28,10 @@ export interface IStateCard extends ICard {
   dataLoadFailed: boolean;
 }
 
+export interface IFilter {
+  type: string;
+}
+
 export interface IState {
   detailedInfo: DetailedInfo;
   country: {
@@ -35,6 +39,19 @@ export interface IState {
     value: string;
   };
   cards: IStateCard[];
+  filter: IFilter,
+  settings: {
+    filter: {
+      default: {
+        name: string;
+        value: string;
+      };
+      types: Array<{
+        name: string;
+        value: string;
+      }>;
+    }
+  }
 }
 
 export interface info {
@@ -98,4 +115,15 @@ export interface IImdbFullInfo {
   tomatoReviews: string;
   country: string;
   date: string;
+}
+
+export interface IRadioGroupItem {
+  name: string;
+  value: string;
+  selected?: boolean;
+}
+
+export interface IRadioGroup {
+  items: IRadioGroupItem[];
+  handleSelected: (selected: IRadioGroupItem) => void;
 }
