@@ -24,7 +24,7 @@ export const RadioGroupListItem = styled.li<{selected?: boolean}>`
   margin-right: 0.5rem;
   user-select: none;
   box-shadow: ${p => p.selected ? "inset 0 0 10px 1px rgba(0,0,0,0.5)" : ""};
-  border-radius: ${p => p.selected ? "5px": ""};
+  border-radius: ${p => p.selected ? "20px": ""};
 
   &:hover {
     cursor: pointer;

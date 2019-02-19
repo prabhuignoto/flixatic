@@ -39,8 +39,9 @@ export interface IState {
     value: string;
   };
   cards: IStateCard[];
-  filter: IFilter,
+  filter: IFilter;
   settings: {
+    countries: Array<{ value: string; id: string }>;
     filter: {
       default: {
         name: string;
@@ -49,9 +50,10 @@ export interface IState {
       types: Array<{
         name: string;
         value: string;
+        selected?: boolean;
       }>;
-    }
-  }
+    };
+  };
 }
 
 export interface info {
@@ -65,7 +67,7 @@ export interface IDetailPopup {
     creator: string[];
     director: string[];
     actor: string[];
-  }
+  };
   close: (flixId: string) => void;
 }
 

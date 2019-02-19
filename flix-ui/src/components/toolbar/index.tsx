@@ -2,29 +2,41 @@ import * as React from "react";
 import { ToolbarNav, ToolbarList, ToolbarListItem } from "./toolbar-styles";
 import CountryDropdown from "../../containers/CountryDropdown";
 import RadioGroupTitleType from "../../containers/filterByType";
+import { connect } from "react-redux";
 
-const ToolBar: React.FunctionComponent = () => (
-  <ToolbarNav>
-    <ToolbarList>
-      <ToolbarListItem>
-        <RadioGroupTitleType />
-      </ToolbarListItem>
-      <ToolbarListItem style={{ marginLeft: "auto" }}>
-        <CountryDropdown
-          items={[
-            { value: "United States", id: "US" },
-            { value: "United Kingdom", id: "GB" },
-            { value: "India", id: "IN" },
-            { value: "Germany", id: "DE" },
-            { value: "Japan", id: "JP" },
-            { value: "Australia", id: "AU" },
-            { value: "Netherlands", id: "NL" }
-          ]}
-          title={"Switch country"}
-        />
-      </ToolbarListItem>
-    </ToolbarList>
-  </ToolbarNav>
-);
+const mapStateToProps = (state: any) => ({
+  items: state.settings.countries
+});
 
-export default ToolBar;
+interface IProps {
+  items?: Array<{ value: string; id: string }>;
+}
+
+class Toolbar extends React.PureComponent<IProps, {}> {
+  constructor(props: IProps) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <ToolbarNav>
+        <ToolbarList>
+          <ToolbarListItem>
+            <RadioGroupTitleType />
+          </ToolbarListItem>
+          <ToolbarListItem style={{ marginLeft: "auto" }}>
+            <CountryDropdown
+              items={this.props.items}
+              title={"Switch country"}
+            />
+          </ToolbarListItem>
+        </ToolbarList>
+      </ToolbarNav>
+    );
+  }
+}
+
+export default connect<{}, {}>(
+  mapStateToProps,
+  null
+)(Toolbar);

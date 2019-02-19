@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { ReactComponent as GithubSVG } from "../../assets/github.svg";
 import { ReactComponent as Twitter } from "../../assets/twitter.svg";
+import { ReactComponent as HeartSVG } from "../../assets/heart.svg";
 
 const FooterWrapper = styled.footer`
   display: flex;
@@ -32,6 +33,15 @@ const SocialWrapper = styled.a`
   margin: 0 0.5rem;
 `;
 
+const Icon = styled.i`
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block;
+  margin-left: 0.5rem;
+`;
+
+
 const Footer: React.FunctionComponent = () => (
   <FooterWrapper>
     <Social>
@@ -42,6 +52,12 @@ const Footer: React.FunctionComponent = () => (
         <Twitter />
       </SocialWrapper>
     </Social>
+    <div style={{ marginLeft: "auto", display: "flex", color: "#fff" }}>
+      Designed &amp; developed with{" "}
+      <Icon>
+        <HeartSVG />
+      </Icon>
+    </div>
     <CopyRights>2019 &copy; Prabhu Murthy</CopyRights>
   </FooterWrapper>
 );

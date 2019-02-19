@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderView />
-        <ToolBar />
+        <ToolBar/>
         <LatestFlix />
         <Details />
         <Footer />

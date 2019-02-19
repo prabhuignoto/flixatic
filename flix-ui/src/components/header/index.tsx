@@ -10,8 +10,7 @@ const Header = styled.header`
   align-items: center;
   justify-content: flex-start;
   padding: 1rem;
-  height: 60px;
-  margin-bottom: 1rem;
+  height: 55px;
 `;
 
 const HeaderView: React.FunctionComponent = () => (

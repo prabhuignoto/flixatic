@@ -7,6 +7,9 @@ export const ToolbarNav = styled.nav`
   margin: 0.5rem 0;
   padding: 0.25rem;
   flex-wrap: wrap;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.45);
+  border-radius: 6px;
+  background: #373737;
 `;
 
 export const ToolbarList = styled.ul`

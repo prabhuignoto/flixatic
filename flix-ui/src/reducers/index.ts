@@ -28,15 +28,26 @@ const State: IState = {
     type: ""
   },
   settings: {
+    countries: [
+      { value: "United States", id: "US" },
+      { value: "United Kingdom", id: "GB" },
+      { value: "India", id: "IN" },
+      { value: "Germany", id: "DE" },
+      { value: "Japan", id: "JP" },
+      { value: "Australia", id: "AU" },
+      { value: "Netherlands", id: "NL" },
+      { value: "Canada", id: "CA" },
+      { value: "France", id: "FR" }
+    ],
     filter: {
       default: {
         name: "All",
         value: "all"
       },
       types: [
-        { name: "Movie", value: "movie" },
-        { name: "Series", value: "series" },
-        { name: "All", value: "" }
+        { name: "Movie", value: "movie", selected: false },
+        { name: "Series", value: "series", selected: false },
+        { name: "All", value: "", selected: true }
       ]
     }
   }

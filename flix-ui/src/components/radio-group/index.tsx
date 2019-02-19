@@ -10,9 +10,7 @@ const RadioGroup: React.FunctionComponent<IRadioGroup> = ({
   items,
   handleSelected
 }) => {
-  const [radioItems, setRadioItems] = React.useState(
-    items.map(x => Object.assign({}, x, { selected: false }))
-  );
+  const [radioItems, setRadioItems] = React.useState(items);
 
   const handleSelection = (name: string, value: string) => {
     setRadioItems(
