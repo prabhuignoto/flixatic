@@ -11,6 +11,7 @@ export const StyledImage = styled.img<{blur: boolean}>`
   object-fit: cover;
   width: 100%;
   height: 100%;
+  object-position: 50% 50%;
 `;
 
 export const PosedImage = posed(StyledImage)({

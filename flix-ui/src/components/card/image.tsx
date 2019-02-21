@@ -13,7 +13,7 @@ const CardImage: React.FunctionComponent<IImage> = ({
   url,
   title,
   blur,
-  fallback
+  fallback,
 }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
 

@@ -55,14 +55,13 @@ export default class FlixCard extends React.Component<
       },
       hover: false
     };
-    this.setGridSpan = this.setGridSpan.bind(this);
+    this.toggleHover = this.toggleHover.bind(this);
   }
 
   shouldComponentUpdate = (nextProps: IProps, nextState: any) => {
     if (
       nextProps.activeFlixId === String(this.props.netflixid) ||
-      this.state.hover !== nextState.hover ||
-      this.state.gridSpan.end !== nextState.gridSpan.end
+      nextState.hover !== this.state.hover
     ) {
       return true;
     } else {
@@ -70,13 +69,9 @@ export default class FlixCard extends React.Component<
     }
   };
 
-  setGridSpan(start: number, end: number) {
+  toggleHover() {
     this.setState({
-      gridSpan: {
-        start,
-        end,
-        enable: !this.state.gridSpan.enable
-      }
+      hover: !this.state.hover
     });
   }
 
@@ -106,8 +101,16 @@ export default class FlixCard extends React.Component<
         start={this.state.gridSpan.start}
         end={this.state.gridSpan.end}
         enable={this.state.gridSpan.enable}
+        onMouseEnter={this.toggleHover}
+        onMouseLeave={this.toggleHover}
       >
-        {/* {!isLoading && (
+        <Image
+          url={image}
+          fallback={`data:image/jpeg;base64,${base64}`}
+          title={title}
+          blur={isLoading}
+          />
+        {this.state.hover && (
           <CardDetails
             rating={rating}
             netflixid={netflixid}
@@ -117,13 +120,7 @@ export default class FlixCard extends React.Component<
             released={released}
             isLoading={isLoading}
           />
-        )} */}
-        <Image
-          url={image}
-          fallback={`data:image/jpeg;base64,${base64}`}
-          title={title}
-          blur={isLoading}
-        />
+        )}
         {/* <button
           onClick={(ev: React.MouseEvent) => {
             ev.preventDefault();

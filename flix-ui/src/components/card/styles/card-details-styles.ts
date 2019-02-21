@@ -38,22 +38,23 @@ export const PosedMoreDetails = Posed(MoreDetails)({
 })
 
 export const Details = styled.div<{ show: boolean }>`
-  padding: 0.5rem 0.2rem;
+  padding: 0.2rem 0.2rem;
   position: absolute;
   left: 0;
-  width: 97%;
-  height: ${p => p.show ? "95%" : ""};
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: ${p => p.show ? "100%" : "35px"};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   cursor: pointer;
-  background: #1d1d1d;
   box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.25);
-  bottom: 0px;
+  bottom: ${p => !p.show ? "0rem" : ""};
+  top: ${p => p.show? "0rem" : ""};
   z-index: 10;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  background: rgba(0,0,0,0.85);
   border-top-left-radius: ${p => p.show ? "4px" : ""};
   border-top-right-radius: ${p => p.show ? "4px" : ""};
 `;

@@ -4,7 +4,7 @@ export const ToolbarNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 0.5rem 0;
+  margin: 0.5rem 1rem;
   padding: 0.25rem;
   flex-wrap: wrap;
   box-shadow: 0 0 10px 1px rgba(0,0,0,0.45);

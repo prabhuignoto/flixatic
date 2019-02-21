@@ -36,19 +36,20 @@ const FlixView: React.FunctionComponent<IFlixView> = ({
           src={loaded ? image1 : fallback}
           loading={!loaded}
           initialPose="close"
-          key={netflixid}
           pose={loaded ? "open" : "close"}
         />
         <img
           style={{ display: "none" }}
-          onLoad={() => setLoaded(true)}
+          onLoad={() => {
+            setLoaded(true)
+          }}
           src={image1}
         />
-        {!loaded && (
+        {/* {!loaded && (
           <FlixImageLoadWrapper>
             <LoadingSVG />
           </FlixImageLoadWrapper>
-        )}
+        )} */}
       </FlixImageWrapper>
     </PosedFlixWrapper>
   );

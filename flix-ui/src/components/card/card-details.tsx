@@ -54,7 +54,7 @@ const CardDetails: React.FunctionComponent<ICardDetails> = ({
           </RatingWrapper>
         )}
         <StarsWrapper>
-          <Stars rating={rating} key={netflixid} />
+          <Stars rating={rating} key={netflixid} size="large"/>
         </StarsWrapper>
         {!showMore && (
           <ExpandButton>

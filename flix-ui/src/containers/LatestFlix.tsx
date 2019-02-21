@@ -89,7 +89,7 @@ class Cards extends React.Component<IProps, IVState> {
         <Query
           query={query}
           variables={variables}
-          fetchPolicy={"network-only"}
+          fetchPolicy={"cache-and-network"}
         >
           {({ data, error, loading }) => {
             if (loading) {
