@@ -3,6 +3,7 @@ import { ToolbarNav, ToolbarList, ToolbarListItem } from "./toolbar-styles";
 import CountryDropdown from "../../containers/CountryDropdown";
 import RadioGroupTitleType from "../../containers/filterByType";
 import { connect } from "react-redux";
+import Genre from "../../containers/Genre";
 
 const mapStateToProps = (state: any) => ({
   items: state.settings.countries
@@ -23,6 +24,9 @@ class Toolbar extends React.PureComponent<IProps, {}> {
         <ToolbarList>
           <ToolbarListItem>
             <RadioGroupTitleType />
+          </ToolbarListItem>
+          <ToolbarListItem>
+            <Genre />
           </ToolbarListItem>
           <ToolbarListItem style={{ marginLeft: "auto" }}>
             <CountryDropdown

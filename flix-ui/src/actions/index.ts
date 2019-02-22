@@ -6,3 +6,4 @@ export const FLIX_DATA_LOADED = Symbol("FLIX_DATA_LOADED");
 export const FLIX_DATA_LOAD_FAILED = Symbol("FLIX_DATA_LOAD_FAILED");
 export const CHANGE_COUNTRY = Symbol("CHANGE_COUNTRY");
 export const UPDATE_FILTER = Symbol("UPDATE_FILTER");
+export const UPDATE_GENRE_SELECTION = Symbol("UPDATE_GENRE_SELECTION");

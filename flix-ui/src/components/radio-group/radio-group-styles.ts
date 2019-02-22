@@ -20,7 +20,7 @@ export const RadioGroupListItem = styled.li<{selected?: boolean}>`
   text-transform: capitalize;
   color: #fff;
   position: relative;
-  font-size: 1.1rem;
+  font-size: 1rem;
   user-select: none;
   box-shadow: ${p => p.selected ? "inset 0 0 10px 1px rgba(0,0,0,0.5)" : ""};
   border-radius: ${p => p.selected ? "20px": ""};

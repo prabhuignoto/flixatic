@@ -1,7 +1,8 @@
 import {
   FLIX_DATA_LOAD_FAILED,
   CHANGE_COUNTRY,
-  UPDATE_FILTER
+  UPDATE_FILTER,
+  UPDATE_GENRE_SELECTION
 } from "./../actions/index";
 import { IState } from "./../types/index";
 import {
@@ -25,7 +26,8 @@ const State: IState = {
     value: "United States"
   },
   filter: {
-    type: ""
+    type: "",
+    genres: []
   },
   settings: {
     countries: [
@@ -91,7 +93,7 @@ export default function(state: IState = State, action: any) {
       });
     case UPDATE_FILTER:
       return Object.assign({}, state, {
-        filter: action.filter
+        filter: Object.assign({}, state.filter, action.filter)
       });
     case FLIX_DATA_LOADED:
       return Object.assign({}, state, {
@@ -104,6 +106,13 @@ export default function(state: IState = State, action: any) {
           id: action.id
         },
         cards: []
+      });
+    case UPDATE_GENRE_SELECTION:
+      debugger;
+      return Object.assign({}, state, {
+        filter: Object.assign({}, state.filter, {
+          genres: action.genres
+        })
       });
     default:
       return state;

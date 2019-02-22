@@ -6,7 +6,8 @@ import {
   FLIX_DATA_LOADED,
   FLIX_DATA_LOAD_FAILED,
   CHANGE_COUNTRY,
-  UPDATE_FILTER
+  UPDATE_FILTER,
+  UPDATE_GENRE_SELECTION
 } from "./../actions/index";
 import { IFilter } from "../types";
 
@@ -48,7 +49,12 @@ export const UpdateCountry = (value: string, id: string)=> ({
   id
 });
 
-export const UpdateFilter = (filter: IFilter) => ({
+export const UpdateFilter = (filter: {type: string}) => ({
   type: UPDATE_FILTER,
   filter
+});
+
+export const UpdateGenreSelection = (selected: string[]) => ({
+  type: UPDATE_GENRE_SELECTION,
+  genres: selected
 })

@@ -69,11 +69,11 @@ export const DetailPopupContainer = styled.div`
 export const PosedDetailPopupContainer = Posed(DetailPopupContainer)({
   open: {
     opacity: 1,
-    filter: "blur(0px)",
+    // filter: "blur(0px)",
   },
   close: {
     opacity: 0,
-    filter: "blur(2px)",
+    // filter: "blur(2px)",
   }
 });
 

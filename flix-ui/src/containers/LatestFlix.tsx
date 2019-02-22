@@ -23,11 +23,12 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 const mapStateToProps = ({
   cards,
   country: { id },
-  filter: { type }
+  filter: { type, genres }
 }: IState) => ({
   cards,
   countryId: id,
-  type
+  type,
+  genres
 });
 
 const LatestFlixContainer = styled.div`
@@ -55,6 +56,7 @@ interface IProps {
   cards: ICard[];
   countryId: string;
   type: string;
+  genres: string[];
 }
 
 interface IVState {
@@ -69,7 +71,8 @@ class Cards extends React.Component<IProps, IVState> {
   shouldComponentUpdate(nextProps: IProps, nextState: IVState) {
     if (
       nextProps.countryId !== this.props.countryId ||
-      nextProps.type !== this.props.type
+      nextProps.type !== this.props.type ||
+      nextProps.genres !== this.props.genres
     ) {
       return true;
     } else {
@@ -79,10 +82,18 @@ class Cards extends React.Component<IProps, IVState> {
 
   render() {
     debugger;
-    const query = this.props.type ? GetTitlesByType : FlixQuery;
-    const variables = this.props.type
-      ? { type: this.props.type, country: this.props.countryId }
-      : { country: this.props.countryId, page: 1, daysBack: 15 };
+    const query =
+      this.props.type || this.props.genres.length > 0
+        ? GetTitlesByType
+        : FlixQuery;
+    const variables =
+      this.props.type || this.props.genres.length > 0
+        ? {
+            type: this.props.type,
+            country: this.props.countryId,
+            genres: this.props.genres.join(",")
+          }
+        : { country: this.props.countryId, page: 1, daysBack: 15 };
 
     return (
       <LatestFlixContainer>
@@ -100,7 +111,7 @@ class Cards extends React.Component<IProps, IVState> {
               return (
                 <FlixCards
                   items={
-                    this.props.type
+                    this.props.type || this.props.genres.length > 0
                       ? data.getReleasesByType
                       : data.getNewReleasesByCountry
                   }

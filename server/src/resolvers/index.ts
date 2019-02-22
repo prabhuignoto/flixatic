@@ -25,7 +25,7 @@ export default {
     async getNewReleasesByCountry(
       obj: any,
       { country, page, daysBack }: IArgs,
-      { dataSources }: any
+      { dataSources }: any,
     ) {
       try {
         if (country && page && daysBack) {
@@ -35,8 +35,8 @@ export default {
             .collection("flix")
             .find({
               countries: {
-                $in: [country]
-              }
+                $in: [country],
+              },
             })
             .toArray();
           return response;
@@ -44,7 +44,7 @@ export default {
       } catch (error) {
         errorLogger.log({
           level: "error",
-          message: `Failed to retrieve the new releases \n ${error}`
+          message: `Failed to retrieve the new releases \n ${error}`,
         });
       }
     },
@@ -54,50 +54,91 @@ export default {
           await MongoClient.connect();
           const dataBase = MongoClient.db(dbName);
           const response = await dataBase.collection("flix_details").findOne({
-            "nfinfo.netflixid": flixId
+            "nfinfo.netflixid": flixId,
           });
           const {
             nfinfo: flixInfo,
             imdbInfo,
-            cast
+            cast,
           } = (response as unknown) as IDetailsResponse;
           return {
             cast,
             flixInfo,
-            imdbInfo
+            imdbInfo,
           };
         }
       } catch (error) {
         errorLogger.log({
           level: "error",
-          message: `Failed to retrieve the get Movie details \n ${error}`
+          message: `Failed to retrieve the get Movie details \n ${error}`,
         });
       }
     },
     async getReleasesByType(
       obj: any,
-      { type, country }: { type: string; country: string },
-      { dataSources }: any
+      {
+        type,
+        country,
+        genres,
+      }: { type: string; country: string; genres: string },
+      { dataSources }: any,
     ) {
       try {
+        const query: {
+          type?: string;
+          countries: { $in?: string[] };
+          genre: { $in?: string[] };
+        } = {
+          countries: {
+            $in: [],
+          },
+          genre: {
+            $in: [],
+          },
+        };
         if (type) {
-          await MongoClient.connect();
-          const datBase = MongoClient.db(dbName);
-          const response = await datBase
-            .collection("flix")
-            .find({
-              countries: {
-                $in: [country],
-              },
-              type,
-            })
-            .toArray();
-          return response;
+          query.type = type;
+        } else {
+          delete query.type;
         }
+
+        if (genres) {
+          query.genre.$in = genres.split(",");
+        } else {
+          delete query.genre;
+        }
+
+        if (country) {
+          query.countries.$in = [country];
+        }
+
+        await MongoClient.connect();
+        const datBase = MongoClient.db(dbName);
+        const response = await datBase
+          .collection("flix")
+          .find(query)
+          .toArray();
+        return response;
       } catch (error) {
         errorLogger.log({
           level: "error",
-          message: `Failed to retrieve the Titles for Filter \n ${error}`
+          message: `Failed to retrieve the Titles for Filter \n ${error}`,
+        });
+      }
+    },
+    async getAllGenres(obj: any, args: any, { datSources }: any) {
+      try {
+        await MongoClient.connect();
+        const dataBase = MongoClient.db(dbName);
+        const response = await dataBase
+          .collection("genres")
+          .find({})
+          .toArray();
+        return response;
+      } catch (error) {
+        errorLogger.log({
+          level: "error",
+          message: `Failed to retrieve the Genres \n ${error}`,
         });
       }
     },
@@ -110,6 +151,6 @@ export default {
       if (flixId) {
         return dataSources.flixApi.getPosters(flixId);
       }
-    }
-  }
+    },
+  },
 };

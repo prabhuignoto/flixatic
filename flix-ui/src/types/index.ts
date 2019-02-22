@@ -30,6 +30,7 @@ export interface IStateCard extends ICard {
 
 export interface IFilter {
   type: string;
+  genres: string[];
 }
 
 export interface IState {

@@ -105,6 +105,10 @@ export default gql`
     date: String
   }
 
+  type Genre {
+    name: String!
+  }
+
   type Query {
     getNewReleasesByCountry(
       country: String!
@@ -114,6 +118,7 @@ export default gql`
     getMovieDetails(flixId: String!): MovieDetails!
     getFullImdbInfo(flixId: String!): ImdbFullInfo!
     getPosters(flixId: String!): [Poster!]!
-    getReleasesByType(type: String!, country: String!): [Release!]!
+    getReleasesByType(type: String!, country: String!, genres: String!): [Release!]!
+    getAllGenres: [Genre!]!
   }
 `;
