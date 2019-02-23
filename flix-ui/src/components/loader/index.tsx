@@ -12,6 +12,7 @@ const LoaderWrapper = styled.div`
   margin-right: auto;
   top: 50%;
   transform: translateY(-50%);
+  border: 1px solid red;
 `;
 
 const Loader: React.FunctionComponent = () => (
